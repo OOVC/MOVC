@@ -75,3 +75,44 @@ border-radius: 0px 20px 20px 0px;
 .borderright{
     border-radius: 0px 20px 20px 0px;
 }
+
+
+/* btns */
+.btn{
+    transition: .5s;
+}
+.btn:hover{
+    transition: .5s;
+}
+.btn-primary{
+    color:black;
+    background-color: rgb(214, 214, 214);
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: rgb(153, 153, 153);
+}
+.btn-primary:hover{
+    border-radius: 15px;
+    color:white;
+    border-color: rgb(153, 153, 153);
+    background-color: rgb(180, 180, 180);
+}
+.btn-primary:active{
+    box-shadow: none !important;
+    border-width: 5px;
+    border-color: rgb(153, 153, 153);
+}
+.btn-primary:focus{
+    box-shadow: 0 0 0 0.2rem rgba(153, 153, 153, .5) !important;
+    color:black;
+    background-color: rgb(214, 214, 214);
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: rgb(153, 153, 153);
+}
+.btn-outline-secondary:active, .btn-outline-secondary:focus{
+    box-shadow: none !important;
+}
+.btn-dark:hover{
+    border-radius: 20px 10px 20px 10px; 
+}

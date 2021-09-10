@@ -1,12 +1,3 @@
-.btn{
-  transition: .5s;
-}
-.btn:hover{
-  border-radius: 20px 10px 20px 10px; 
-  color: white;
-  transition: .5s;
-}
-
 .logo{
   margin-left: 10px; 
   background-color: rgb(88, 218, 131); 

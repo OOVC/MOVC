@@ -893,7 +893,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "name": "Ylata",
-        "type ": "city"
+        "type": "city"
       },
       "geometry": {
         "type": "Point",

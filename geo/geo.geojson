@@ -4,7 +4,7 @@
     {
       "type": "Feature",
       "properties": {
-        "stroke": "#fff700",
+        "stroke": "#ffbb00",
         "stroke-width": 2,
         "stroke-opacity": 1,
         "fill": "#ff0000",
@@ -344,7 +344,7 @@
     {
       "type": "Feature",
       "properties": {
-        "stroke": "#eeff00",
+        "stroke": "#ffbb00",
         "stroke-width": 2,
         "stroke-opacity": 1,
         "fill": "#ff0000",

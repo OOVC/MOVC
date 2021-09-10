@@ -1,0 +1,77 @@
+.bordert{
+    border-radius: 20px;
+  }
+.borderc{
+border-radius: 0px 0px 20px 20px;
+}
+
+.borderl{
+border-radius: 20px 0px 0px 20px;
+}
+.borderr{
+border-radius: 0px 20px 20px 0px;
+}
+@media (max-width: 768px) {
+    .borderl{
+        border-radius: 20px 20px 0px 0px;
+    }
+    .borderr{
+        border-radius: 0px 0px 20px 20px;
+    }
+}
+
+#completely{
+    transition: .5s;
+    fill: rgb(21, 197, 21);
+}
+
+#completely:hover{
+    transition: .5s;
+    fill: rgb(21, 103, 197);
+}
+
+#partly{
+    transition: .5s;
+    fill: rgb(0, 15, 153);
+}
+
+#partly:hover{
+    transition: .5s;
+    fill: rgb(197, 71, 21);
+}
+
+#pending{
+    transition: .5s;
+    fill: rgb(6, 165, 165);
+}
+
+#pending:hover{
+    transition: .5s;
+    fill: rgb(162, 0, 255);
+}
+
+#not-match{
+    transition: .5s;
+    fill: rgb(180, 2, 2);
+}
+
+#not-match:hover{
+    transition: .5s;
+    fill: rgb(234, 0, 255);
+}
+
+.ghost{
+    display: none;
+}
+
+.valutecard{
+    background-color: rgba(0, 0, 0, 0.7);
+    color:white;
+}
+
+.borderleft{
+    border-radius: 20px 0px 0px 20px;
+}
+.borderright{
+    border-radius: 0px 20px 20px 0px;
+}

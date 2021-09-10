@@ -44,7 +44,13 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
         valutes.findOne({idc:req.params.valute}, async (err, valute)=>{
 			if(valute.course){
 				if(cachedvalutes[req.params.valute]){
-					valute.course = cachedvalutes[req.params.valute]
+					if(valute.idc==="SKL"){
+						let courseSKL = skl.collection("course");
+						let course = await courseSKL.find({}).toArray()
+						valute.course = JSON.stringify(course);
+					} else{
+						valute.course = cachedvalutes[req.params.valute]
+					}
 				} else{
 					if(valute.idc==="SKL"){
 						let courseSKL = skl.collection("course");

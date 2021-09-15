@@ -142,7 +142,17 @@ window.onload = async ()=>{
                                         fillOpacity: 1
                                 }
                         }).addTo(movc);
-                } else{
+                } else if(geo[i].properties.type === "water"){
+                        L.geoJSON(geo[i],{
+                                style:{
+                                        fillColor: "#75cff0",
+                                        color: "#75cff0",
+                                        weight: 0,
+                                        fillOpacity: 1
+                                }
+                        }).addTo(movc);
+                }
+                else{
                         L.geoJSON(geo[i],{
                                 onEachFeature: onEachFeature,
                                 pointToLayer: cpoint,

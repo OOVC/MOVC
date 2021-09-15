@@ -111,7 +111,7 @@ window.onload = async ()=>{
                 document.getElementById("preloader").innerHTML = "Получаю: "+(geo[i].properties.name||geo[i].properties.Name);
                 if(geo[i].properties.type==="city"||geo[i].properties.type==="capital-city"||geo[i].properties.type==="landmark"){
                         logmarker("Получаю маркер:", (geo[i].properties.name||geo[i].properties.Name));
-                } else if(geo[i].properties.type==="sand"||geo[i].properties.type==="grass"){
+                } else if(geo[i].properties.type==="sand"||geo[i].properties.type==="grass"||geo[i].properties.type==="water"){
                         logland("Получаю кусок земли:", (geo[i].properties.name||geo[i].properties.Name));
                 } else{
                         loginfo("Получаю страну:", (geo[i].properties.name||geo[i].properties.Name));

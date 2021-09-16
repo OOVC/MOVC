@@ -116,3 +116,22 @@ border-radius: 0px 20px 20px 0px;
 .btn-dark:hover{
     border-radius: 20px 10px 20px 10px; 
 }
+
+.required{
+    padding: 5px;
+    border-radius: 20px;
+    background-color: #d8d8d8;
+    margin: 10px !important;
+}
+
+.formrow{
+    margin: 10px !important;
+}
+
+.movcform{
+    border-radius: 20px !important;
+}
+
+input[type=button], input[type=submit]{
+    border-radius: 20px !important;
+}

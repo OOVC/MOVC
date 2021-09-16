@@ -3,20 +3,24 @@
 let options = [
     {
         title:"id страны*",
-        help:"Можно использовать английские буквы и тире(-), напр: banana-republic",
+        help:"Можно использовать английские буквы и тире(-)",
         id:"idc",
-        required:true
+        required:true,
+        placeholder:"banana-republic"
     },
     {
         title:"Имя страны*",
         id:"name",
-        help:"Например Банановая республика",
+        help:"Название вашей страны",
+        placeholder:"Банановая республика",
         required:true
     },
     {
         title:"Ссылка на фото флага страны*",
         id:"img",
-        help:"Желательно фото с сайта imgur"
+        help:"Желательно фото с сайта imgur",
+        required:true,
+        placeholder:"https://i.imgur.com/iNAUnTN.png"
     },
     {
         title:"Тип правления*",
@@ -87,7 +91,6 @@ let options = [
             <div class="col"><input type="button" onclick=audio() value="Аудио" class="btn btn-outline-dark btn-sm"></div>
             <div class="col"><input type="button" onclick=custom() value="Доп. информация" class="btn btn-outline-dark btn-sm"></div>
         </div>
-        Например Здесь все едят бананы
         `,
         type:"area",
         required:true
@@ -95,30 +98,34 @@ let options = [
     {
         title:"Правитель*",
         id:"owner",
-        help:"Например Бананов Бананоед",
+        help:"Имя правителя страны",
+        placeholder:"Бананов Бананоед",
         required:true
     },
     {
         title:"Контакт правителя*",
         id:"contact",
-        help:"Например https://vk.com/example - только ссылка",
+        help:"Только ссылка",
+        placeholder:"https://vk.com/example",
         required:true
     },
     {
         title:"Дата основания*",
         id:"date",
-        help:"Например 22.02.2021",
+        placeholder:"22.02.2021",
         required:true
     },
     {
         title:"Сайт",
         id:"site",
-        help:"Ссылка на сайт государства"
+        help:"Ссылка на сайт государства",
+        placeholder:"https://example.com"
     },
     {
         title:"Группа в вк",
         id:"vk",
-        help:"Ссылка на группу вк государства"
+        help:"Ссылка на группу вк государства",
+        placeholder:"https://vk.com/example"
     },
     {
         title:"Хочу вступить в ООВГ.",

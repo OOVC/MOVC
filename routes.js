@@ -100,7 +100,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
 		});
     });
 	app.get('/geo', (req, res)=>{
-		res.redirect("https://raw.githubusercontent.com/artegoser/MOVC/main/geo/geo.geojson");
+		res.redirect("https://artegoser.github.io/movc/geo/geo.geojson");
     });
 	app.get('/getgeo', async (req, res)=>{
 		co.find({}).sort({rank:-1}).toArray((_,arr)=>{
@@ -113,7 +113,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
 	});
 	app.get('/geo/:country', async (req, res)=>{
 		res.header("Access-Control-Allow-Origin", "https://artegoser.github.io");
-        let geo = await (await fetch("https://raw.githubusercontent.com/artegoser/MOVC/main/geo/geo.geojson")).json();
+        let geo = await (await fetch("https://artegoser.github.io/movc/geo/geo.geojson")).json();
 		geo.features = geo.features.filter((val)=>{
 			if(val.properties.name===req.params.country) return true;
 		});

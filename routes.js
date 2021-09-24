@@ -74,7 +74,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
         });
     });
 	app.get("/req-country", (req, res)=>{
-		res.render("pages/req-country");
+		res.render("pages/req-country", {query:req.query});
 	});
 	app.get('/countries/:country', (req, res)=>{
         co.findOne({idc: req.params.country}, (err, val)=>{

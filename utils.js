@@ -73,7 +73,17 @@ function addVirtCurrencies(fx, valutes) {
     return fx.rates
 }
 
+function generateGet(obj){
+    let str = "?movc=true";
+    delete obj._id;
+    for(let i of Object.keys(obj)){
+        str+= `&${i}=${obj[i]}`
+    }
+    return str;
+}
+
 module.exports = {
     replacespec,
-    addVirtCurrencies
+    addVirtCurrencies,
+    generateGet
 }

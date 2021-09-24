@@ -143,7 +143,9 @@ let options = [
         <%- include("../components/bootstrap") %> 
         <%- include("../components/head") %> 
         <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
+        <script src="/public/js/autobind.js"></script> 
         <meta name="description" content="Хочешь чтобы твое государство индексировалось в MOVC? Тогда подай заявку здесь. Форма подачи заявки в виртуальное государство"/>
+        <meta id="idcinfo" content="<%=query.idc%>"/>
         <title>Отправить заявку на добавление в индексирование государств</title>
     </head>
     <body>

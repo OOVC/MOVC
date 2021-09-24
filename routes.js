@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken");
 const fetch = require("node-fetch");
 const Vkbot = require("./vk-logger");
 let fx = require("money");
+const Recaptcha = require('express-recaptcha').RecaptchaV2;
+var recaptcha = new Recaptcha(process.env.SICAPTCHA||require("./secure.json").sitecaptcha, process.env.SECAPTCHA||require("./secure.json").secretcaptcha);
 module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
 	const vklog = new Vkbot(VKTOKEN);
 	let cbr = (await (await fetch("https://www.cbr-xml-daily.ru/latest.js")).json());fx.base = cbr.base;fx.rates.USD=cbr.rates.USD;fx.rates.EUR=cbr.rates.EUR;
@@ -244,11 +246,16 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
 	app.get("/currencyedit", (req,res)=>{
 		res.render("pages/currencyedit")
 	});
-	app.post('/addcountry', (req, res)=>{
+	app.post('/addcountry', recaptcha.middleware.verify, (req, res)=>{
 		let country = req.body || false;
 		if(!country||!country.idc){
 			res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 			res.end("Нет тела запроса, или не указан id страны");
+			return;
+		} 
+		if(req.recaptcha.error&&!(req.query.pass||country.pass)){
+			res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+			res.end("Подтвердите, что вы человек");
 			return;
 		} 
 		let pass = req.query.pass || country.pass;

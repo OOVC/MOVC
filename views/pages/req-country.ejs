@@ -142,6 +142,7 @@ let options = [
     <head>
         <%- include("../components/bootstrap") %> 
         <%- include("../components/head") %> 
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
         <meta name="description" content="Хочешь чтобы твое государство индексировалось в MOVC? Тогда подай заявку здесь. Форма подачи заявки в виртуальное государство"/>
         <title>Отправить заявку на добавление в индексирование государств</title>
     </head>
@@ -151,6 +152,12 @@ let options = [
         <div class="container">
             <form action="/addcountry" method="post">
                 <%- include("../components/form", {options}) %> 
+                <div class="formrow row m-5">
+                    <div class="col-lg-12"><label class="form-label">Подтвердите, что вы человек</label></div>
+                    <div class="col-sm-12">
+                        <div class="g-recaptcha" data-sitekey="6LfUhYAcAAAAAOC-Ilm3foyisMXCUZre3Y10HZJk"></div>
+                    </div>
+                </div>
                 <div class="row m-5">
                     <input formaction="/country-preview" formtarget="_blank" type="submit" value="Предпросмотр" class="btn btn-primary mb-1">
                     <input type="submit" value="Отправить" id="send" class="btn btn-dark">

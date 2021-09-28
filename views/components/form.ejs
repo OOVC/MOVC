@@ -32,7 +32,7 @@
             <div class="formrow row m-5 <%=options[i].required ? "required" : "" %>">
                 <div class="col-lg-12"><label class="form-label"><%=options[i].title%></label></div>
                 <div class="col-sm-12">
-                    <textarea id="<%=options[i].id%>" name="<%=options[i].id%>" class="movcform form-control" <%- options[i].required ? "required" : "" %>></textarea>
+                    <textarea rows="5" id="<%=options[i].id%>" name="<%=options[i].id%>" class="movcform form-control" <%- options[i].required ? "required" : "" %>></textarea>
             <%
                     if(options[i].help) %><div class="form-text"><%-options[i].help%></div><%
             %>

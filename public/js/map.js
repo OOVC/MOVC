@@ -75,7 +75,7 @@ window.onload = async ()=>{
                         }
                 }
                 function cpoint(feature, latlng){
-                        if(feature.properties.type==="city"){
+                        if(feature.properties.type==="city"||!feature.properties.type){
                                 let myIcon = L.icon({
                                         iconSize:     [12, 12],
                                         iconUrl: 'https://artegoser.github.io/movc/icons/city.png',

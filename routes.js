@@ -210,11 +210,10 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
 				}
 				delete val._id;
 				delete val.cidc;
-				if(country.verified==="half") {}
-				else if(country.verified==="false") country.verified = false;
-				else if(country.verified) country.verified = true;
-				else if(!country.verified) country.verified = "pending"
+				country.verified = utils.convertFHT(country.verified);
+				country.irl = utils.convertFHT(country.irl);
 				val.verified = country.verified;
+				val.irl = country.irl;
 				co.updateOne({idc: country.idc},{$set: val}, {upsert:true},
 				(err)=>{
 					if (err){
@@ -258,13 +257,11 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
 			res.end("Подтвердите, что вы человек");
 			return;
 		} 
-		let pass = req.query.pass || country.pass;
+		let pass = country.pass;
 		country.pass = "";
 		
-		if(country.verified==="half") {}
-		else if(country.verified==="false") country.verified = false;
-		else if(country.verified) country.verified = true;
-		else if(!country.verified) country.verified = "pending"
+		country.verified = utils.convertFHT(country.verified);
+		country.irl = utils.convertFHT(country.irl);
 
 		if(country.rank) country.rank = parseInt(country.rank);
 

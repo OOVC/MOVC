@@ -20,6 +20,10 @@ border-radius: 0px 20px 20px 0px;
     }
 }
 
+.icon{
+    text-decoration: none;
+}
+
 #completely{
     transition: .5s;
     fill: rgb(21, 197, 21);

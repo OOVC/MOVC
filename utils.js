@@ -73,17 +73,16 @@ function addVirtCurrencies(fx, valutes) {
     return fx.rates
 }
 
-function generateGet(obj){
-    let str = "?movc=true";
-    delete obj._id;
-    for(let i of Object.keys(obj)){
-        str+= `&${i}=${obj[i]}`
-    }
-    return str;
+function convertFHT(val){
+    if(val==="half") {}
+    else if(val==="false") val = false;
+    else if(val="true") val = true;
+    else if(!val) val = "pending"
+    return val;
 }
 
 module.exports = {
     replacespec,
     addVirtCurrencies,
-    generateGet
+    convertFHT
 }

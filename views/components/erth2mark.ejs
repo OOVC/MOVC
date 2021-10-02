@@ -1,11 +1,11 @@
 <% 
     if(country.verified===true){
-        %><a href="/erth2#marks"><%-include("../components/icons/erth2/completely")%></a><%
+        %><a class="icon" href="/erth2#marks"><%-include("../components/icons/erth2/completely")%></a><%
     } else if(country.verified===false){
-        %><a href="/erth2#marks"><%-include("../components/icons/erth2/not-match")%></a><%
+        %><a class="icon" href="/erth2#marks"><%-include("../components/icons/erth2/not-match")%></a><%
     } else if(country.verified==="half"){
-        %><a href="/erth2#marks"><%-include("../components/icons/erth2/partly")%></a><%
+        %><a class="icon" href="/erth2#marks"><%-include("../components/icons/erth2/partly")%></a><%
     } else{
-        %><a href="/erth2#marks"><%-include("../components/icons/erth2/pending")%></a><%
+        %><a class="icon" href="/erth2#marks"><%-include("../components/icons/erth2/pending")%></a><%
     }
 %>

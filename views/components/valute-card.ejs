@@ -1,5 +1,5 @@
 <div class="row bordert animate__fadeInUp wow" style="padding: 5px; background-color: rgb(231, 231, 231); background-image: url(<%=valutes[i].img%>); background-position: center; background-size: cover;">
     <div class="col valutecard borderleft text-center" style="padding: 8px;"><span class="btn btn-secondary bordert"><%=valutes[i].idc%></span></div>
     <div class="col valutecard text-center" style="padding: 8px;"><span class="btn btn-warning bordert"><%= parseFloat(valutes[i].amount).toFixed(3) %> <%= valutes[i].type %></span></div>
-    <div class="col text-right valutecard borderright" style="padding: 8px;"><a href= "/currencies/<%=valutes[i].idc%>" class="btn btn-primary bordert">Подробнее</a></div>
+    <div class="col text-end valutecard borderright" style="padding: 8px;"><a href= "/currencies/<%=valutes[i].idc%>" class="btn btn-primary bordert">Подробнее</a></div>
 </div>

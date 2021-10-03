@@ -77,7 +77,7 @@ function convertFHT(val){
     if(val==="half") {}
     else if(val==="false") val = false;
     else if(val="true") val = true;
-    else if(!val) val = "pending"
+    else val = "pending"
     return val;
 }
 

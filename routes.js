@@ -342,9 +342,6 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
 	app.get("/robots.txt", (req,res)=>{
 		res.sendFile(__dirname+"/robots.txt");
 	});
-	app.get("/.well-known/pki-validation/DBE82D7E622EA20DAA9EC71FDA9BDAA5.txt", (req,res)=>{
-		res.sendFile(__dirname+"/dns.txt");
-	});
 	app.use((req, res)=>{
 		res.status(404);
 		res.render("pages/notfound")

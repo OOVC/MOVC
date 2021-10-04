@@ -232,7 +232,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
 								}));
 							} else{
 								res.redirect(`/countries/${country.idc}`)
-								vklog.convsend(`Государство ${val.name} только что появилось в MOVC\n Посмотреть - artegoser.github.io/movc/?url=/countries/${country.idc}`);
+								vklog.convsend(`Государство ${val.name} только что появилось в MOVC\n Посмотреть - https://movc.xyz/countries/${country.idc}`);
 							}
 						});
 					}
@@ -296,9 +296,9 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
 				} else{
 					res.redirect(`/pending-countries/${country.cidc}`);
 					if(country.oovg === "Да"){
-						vklog.oovgsend(`Государство ${country.name} хочет вступить в ООВГ\n Ссылка - artegoser.github.io/movc/?url=/pending-countries/${country.cidc}`);
+						vklog.oovgsend(`Государство ${country.name} хочет вступить в ООВГ\n Ссылка - https://movc.xyz/pending-countries/${country.cidc}`);
 					} else{
-						vklog.movcsend(`Государство ${country.name} подало заявку в MOVC\n Ссылка - artegoser.github.io/movc/?url=/pending-countries/${country.cidc}`);
+						vklog.movcsend(`Государство ${country.name} подало заявку в MOVC\n Ссылка - https://movc.xyz/pending-countries/${country.cidc}`);
 					}
 				}
 			});

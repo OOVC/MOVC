@@ -5,7 +5,6 @@
     <div class="col-md-6 col-sm-12 borderr" style="background-color: rgb(231, 231, 231)">
         <h5 class="card-title">
             <%=val[i].name%> 
-            <%- include("../components/erth2mark" , {country:val[i]}) %>
         </h5>
         <p class="card-text"><%-val[i]?.description?.replace(/(<([^>]+)>)/gi,'\n').slice(0, 500)+"..."%></p>
         <a href= "/pending-countries/<%=val[i].cidc%>" class="btn btn-primary bordert mb-2">Подробнее</a>

@@ -9,10 +9,15 @@ const favicon = require('serve-favicon');
 app.set("view engine", "ejs");
 app.set("views", `${__dirname}/views`)
 
+app.use((req,res,next)=>{
+    if(req.headers.host==="movc.xyz"||req.headers.host==="www.movc.xyz"||req.headers.host==="localhost") next();
+    else res.redirect(`https://movc.xyz${req.originalUrl}`);
+});
+
 app.use("/public",express.static(`${__dirname}/public`));
 app.use(favicon(`${__dirname}/public/favicon.ico`));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 80;
 const PASS = process.env.PASS || require("./secure.json").pass;

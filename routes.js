@@ -342,6 +342,9 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
 	app.get("/robots.txt", (req,res)=>{
 		res.sendFile(__dirname+"/robots.txt");
 	});
+	app.get("/sitemap.xml", (req,res)=>{
+		res.sendFile(__dirname+"/sitemap.xml");
+	});
 	app.use((req, res)=>{
 		res.status(404);
 		res.render("pages/notfound")

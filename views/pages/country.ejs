@@ -38,9 +38,6 @@
                 </div>
               </div>
               <div class="row">
-                  <span><b>Описание:</b> <%- country.description %></span>
-              </div>
-              <div class="row">
                   <span><b>Тип правления:</b> <%= country.type %></span>
               </div>
               <%
@@ -50,7 +47,25 @@
                   </div>
                 <%}
               %>
+              <%
+                if(country.srcdescription?.length<=900||country.description.length<=900){
+                  %>
+                  <div class="row">
+                      <span><b>Описание:</b> <%- country.description %></span>
+                  </div>  
+                  <%
+                }
+              %>
             </div>
+            <%
+              if(country.srcdescription?.length>900||country.description.length>900){
+                %>
+                <div class="row animate__fadeInRight wow">
+                    <span class="col" id="description"><b>Описание:</b> <%- country.description %></span>
+                </div>
+                <%
+              }
+            %>
           </div>
           <div class="row bordert animate__fadeInUp wow" style="background-color: #e4e4e4; margin-top: 5px;">
               <div class="col text-center">

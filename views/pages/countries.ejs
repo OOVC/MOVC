@@ -5,7 +5,7 @@
         <%- include("../components/head") %> 
         <%- include("../components/wow") %>
         <meta name="description" content="Виртуальные государства в регистре MOVC. Здесь ты можешь посмотреть на виртуальные государства и узнать информацию о них"/>
-        <title>Виртуальные государства</title>
+        <title>Виртуальные государства <%- req.query.search ? "Поиск: "+req.query.search  : "" %></title>
     </head>
     <body>
         <%- include("../components/menu") %> 

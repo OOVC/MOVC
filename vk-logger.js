@@ -35,7 +35,7 @@ class Logger{
     async convsend(message){
         let conversations = await this.vk.api.messages.getConversations();
         for(let it of conversations.items){
-            if(it.conversation.peer.type === "chat"){
+            if(it.conversation?.chat_settings?.title === "Мировой Форум"){
                 this.vk.api.messages.send({
                     peer_id:it.conversation.peer.id,
                     random_id:getRandomInt(0, 999),

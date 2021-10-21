@@ -46,7 +46,11 @@
             <%
                 for(let i = 0; i<valutes.length; i++){
                     if(i%6==0){
-                        %><%- include("../components/cuads") %><%
+                        %>
+                            <div class="row animate__fadeInUp wow" style="padding: 5px;">
+                                <%- include("../components/cuads") %>
+                            </div>
+                        <%
                     }
                     %>
                         <%- include("../components/valute-card", {i}) %>

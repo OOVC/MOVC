@@ -151,8 +151,10 @@ let options = [
     <body>
         <script src="/public/js/prevent.js"></script>
         <%- include("../components/menu") %>
-        <%- include("../components/cuads") %> 
         <div class="container">
+            <div class="row text-center">
+                <%- include("../components/cuads") %> 
+            </div>
             <form action="/addcountry" method="post">
                 <%- include("../components/form", {options}) %> 
                 <div class="formrow row m-5">

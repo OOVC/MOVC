@@ -45,6 +45,9 @@
             </div>
             <%
                 for(let i = 0; i<valutes.length; i++){
+                    if(i%6==0){
+                        %><%- include("../components/cuads") %><%
+                    }
                     %>
                         <%- include("../components/valute-card", {i}) %>
                     <%

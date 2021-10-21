@@ -23,6 +23,9 @@
             </form>
             <%
                 for(let i = 0; i<val.length; i++){
+                    if(i%3==0){
+                        %><%- include("../components/coads") %><%
+                    }
                     %>
                         <%- include("../components/country-card", {i:i}) %>
                     <%

@@ -21,7 +21,9 @@ let options = [
     <body>
         <%- include("../components/menu") %>
         <div class="container">
-            <%- include("../components/cuads") %> 
+            <div class="row text-center">
+                <%- include("../components/cuads") %>
+            </div> 
             <form action="/geojs" method="GET">
                 <%- include("../components/form", {options}) %> 
                 <div class="row m-5">

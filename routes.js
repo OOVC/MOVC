@@ -112,7 +112,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
         });
     });
 	app.get("/req-country", (req, res)=>{
-		if(!(req.session.passport.user?.id)) return res.redirect("/gauth");
+		if(!(req.session?.passport?.user?.id)) return res.redirect("/gauth");
 		res.render("pages/req-country", {query:req.query});
 	});
 	app.get('/countries/:country', (req, res)=>{
@@ -135,7 +135,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 	app.get('/pending-countries/:country', (req, res)=>{
 			pending.findOne({cidc: req.params.country}, (err, val)=>{
 				co.findOne({idc:val.idc}, (err, original)=>{
-					if(original?.googid==req.session.passport.user.id) val.authorised = true;
+					if(original?.googid==req.session?.passport?.user?.id) val.authorised = true;
 					if(val) res.render("pages/pending-country", {country: val});
 					else {
 						res.render("pages/notfound")
@@ -330,7 +330,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 				});
 		} else{
 			country.cidc = sha3(""+Math.random()+Date.now());
-			if(!req.session.passport.user.id) return res.redirect("/gauth");
+			if(!req.session?.passport?.user?.id) return res.redirect("/gauth");
 			country.googid = req.session.passport.user.id;
 			pending.insertOne(country,(err)=>{
 				if (err){

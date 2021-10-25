@@ -25,7 +25,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 	passport.use(new GoogleStrategy({
 		clientID: GCID,
 		clientSecret: GCS,
-		callbackURL: "https://movc.xyz/auth/google/callback/"
+		callbackURL: "https://movc.xyz/gcallback"
 	  },
 	  function(accessToken, refreshToken, profile, done) {
 			 return done(null, profile);
@@ -51,7 +51,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 	});
 
 	app.get("/gauth", passport.authenticate("google", {scope:["profile"]}));
-	app.get("/auth/google/callback", passport.authenticate("google", {failureRedirect:"/notfound"}), (req,res)=>{
+	app.get("/gcallback", passport.authenticate("google", {failureRedirect:"/notfound"}), (req,res)=>{
 		res.redirect("/");
 	});
 	app.get('/logout', (req, res) => {

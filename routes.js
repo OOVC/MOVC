@@ -51,7 +51,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 	});
 
 	app.get("/gauth", passport.authenticate("google", {scope:["profile"]}));
-	app.get("/auth/google/callback", passport.authenticate("google", {failureRedirect:"/gauth"}), (req,res)=>{
+	app.get("/auth/google/callback", passport.authenticate("google", {failureRedirect:"/notfound"}), (req,res)=>{
 		res.redirect("/req-country");
 	});
 	app.get('/logout', (req, res) => {
@@ -135,7 +135,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 	app.get('/pending-countries/:country', (req, res)=>{
 			pending.findOne({cidc: req.params.country}, (err, val)=>{
 				co.findOne({idc:val.idc}, (err, original)=>{
-					if(original?.googid==req.session.passport.user.id+"") val.authorised = true;
+					if(original?.googid==req.session.passport.user.id) val.authorised = true;
 					if(val) res.render("pages/pending-country", {country: val});
 					else {
 						res.render("pages/notfound")

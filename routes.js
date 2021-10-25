@@ -25,7 +25,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 	passport.use(new GoogleStrategy({
 		clientID: GCID,
 		clientSecret: GCS,
-		callbackURL: "http://localhost/auth/google/callback"
+		callbackURL: "https://movc.xyz/auth/google/callback"
 	  },
 	  function(accessToken, refreshToken, profile, done) {
 			 return done(null, profile);

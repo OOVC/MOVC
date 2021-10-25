@@ -46,7 +46,7 @@
             </div>
             <div class="row">
                 <span>
-                  <b><%= country.name %></b> 
+                  <b><%= country.name %> <%- country.authorised===true ? include("../components/icons/erth2/completely") : include("../components/icons/erth2/not-match") %></b> 
                 </span>
             </div>
             <%-include("../components/textads") %>

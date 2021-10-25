@@ -2,11 +2,14 @@ const sha3 = require('js-sha3').sha3_224;
 const utils = require("./utils");
 const jwt = require("jsonwebtoken");
 const fetch = require("node-fetch");
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const cookieSession = require('cookie-session')
 const Vkbot = require("./vk-logger");
 let fx = require("money");
 const Recaptcha = require('express-recaptcha').RecaptchaV2;
 var recaptcha = new Recaptcha(process.env.SICAPTCHA||require("./secure.json").sitecaptcha, process.env.SECAPTCHA||require("./secure.json").secretcaptcha);
-module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
+module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 	const vklog = new Vkbot(VKTOKEN);
 	let cbr = (await (await fetch("https://www.cbr-xml-daily.ru/latest.js")).json());fx.base = cbr.base;fx.rates.USD=cbr.rates.USD;fx.rates.EUR=cbr.rates.EUR;
 	let cachedvalutes = {};
@@ -16,10 +19,45 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
 	let geo = db.collection("geo");
 	let valutes = db.collection("valutes");
 	let ads = db.collection("ads");
+	let users = db.collection("google-auth-users");
 	fx.rates = utils.addVirtCurrencies(fx, await valutes.find({}).toArray());
+
+	passport.use(new GoogleStrategy({
+		clientID: GCID,
+		clientSecret: GCS,
+		callbackURL: "http://localhost/auth/google/callback"
+	  },
+	  function(accessToken, refreshToken, profile, done) {
+			 return done(null, profile);
+	  }
+	));
+	passport.serializeUser(function(user, done) {
+		done(null, user);
+	  });
+	passport.deserializeUser(function(user, done) {
+		done(null, user);
+	});
+
+	app.use(cookieSession({
+		name: 'tuto-session',
+		keys: [PASS, VKTOKEN]
+	}));
+
+	app.use(passport.initialize());
+	app.use(passport.session());
 
 	app.get("/", (req,res)=>{
 		res.redirect("/countries")
+	});
+
+	app.get("/gauth", passport.authenticate("google", {scope:["profile"]}));
+	app.get("/auth/google/callback", passport.authenticate("google", {failureRedirect:"/gauth"}), (req,res)=>{
+		res.redirect("/req-country");
+	});
+	app.get('/logout', (req, res) => {
+		req.session = null;
+		req.logout();
+		res.redirect('/');
 	});
 	app.get("/courses", (req,res)=>{
 		res.end(JSON.stringify({
@@ -74,6 +112,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
         });
     });
 	app.get("/req-country", (req, res)=>{
+		if(!(req.session.passport.user?.id)) return res.redirect("/gauth");
 		res.render("pages/req-country", {query:req.query});
 	});
 	app.get('/countries/:country', (req, res)=>{
@@ -94,11 +133,14 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
     });
 
 	app.get('/pending-countries/:country', (req, res)=>{
-        pending.findOne({cidc: req.params.country}, (err, val)=>{
-			if(val) res.render("pages/pending-country", {country: val});
-			else {
-				res.render("pages/notfound")
-			}
+			pending.findOne({cidc: req.params.country}, (err, val)=>{
+				co.findOne({idc:val.idc}, (err, original)=>{
+					if(original?.googid==req.session.passport.user.id+"") val.authorised = true;
+					if(val) res.render("pages/pending-country", {country: val});
+					else {
+						res.render("pages/notfound")
+					}
+			});
 		});
     });
 	app.get('/geo', (req, res)=>{
@@ -257,8 +299,10 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
 			res.end("Подтвердите, что вы человек");
 			return;
 		} 
+
 		let pass = country.pass;
-		country.pass = "";
+		delete country.pass;
+		delete country["g-recaptcha-response"];
 		
 		country.verified = utils.convertFHT(country.verified);
 		country.irl = utils.convertFHT(country.irl);
@@ -286,6 +330,8 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN)=>{
 				});
 		} else{
 			country.cidc = sha3(""+Math.random()+Date.now());
+			if(!req.session.passport.user.id) return res.redirect("/gauth");
+			country.googid = req.session.passport.user.id;
 			pending.insertOne(country,(err)=>{
 				if (err){
 					res.end(JSON.stringify({

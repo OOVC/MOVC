@@ -52,7 +52,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 
 	app.get("/gauth", passport.authenticate("google", {scope:["profile"]}));
 	app.get("/auth/google/callback", passport.authenticate("google", {failureRedirect:"/notfound"}), (req,res)=>{
-		res.redirect("/req-country");
+		res.redirect("/");
 	});
 	app.get('/logout', (req, res) => {
 		req.session = null;

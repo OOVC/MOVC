@@ -1,4 +1,4 @@
-const { VK , Keyboard } = require('vk-io');
+const { VK } = require('vk-io');
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);

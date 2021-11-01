@@ -27,6 +27,7 @@ module.exports = (io,db,PASS,filter)=>{
         });
         socket.on("get", data=>{
             cw.findOne({id:data.id}, (err, war)=>{
+                if(!war) return;
                 socket.emit("update", {[Object.keys(war.countries)[0]]:war.countries[Object.keys(war.countries)[0]], [Object.keys(war.countries)[1]]:war.countries[Object.keys(war.countries)[1]]});
             });
         });

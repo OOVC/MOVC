@@ -7,6 +7,8 @@ window.addEventListener("load", ()=>{
         let clicks = Object.values(data);
         let sum = clicks[0]+clicks[1];
 
+        document.getElementById("allclick").innerHTML = sum+" кликов";
+
         let numsofc = {};
         numsofc.c1 = document.getElementById("c1id").content === Object.keys(data)[0] ? Object.keys(data)[0] : Object.keys(data)[1];
         numsofc.c2 = document.getElementById("c2id").content === Object.keys(data)[0] ? Object.keys(data)[0] : Object.keys(data)[1];

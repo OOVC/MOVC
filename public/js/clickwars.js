@@ -20,6 +20,11 @@ window.addEventListener("load", ()=>{
         document.getElementById("c2c").innerHTML = data[numsofc.c2];
     }
 
+    socket.emit("get", {id});
+
+    socket.on("update", data=>{
+        update(data);
+    });
 
     document.getElementById("c1").onclick = ()=>{
         socket.emit("click", {id, idc:document.getElementById("c1id").content, idco:document.getElementById("c2id").content})
@@ -28,11 +33,5 @@ window.addEventListener("load", ()=>{
     document.getElementById("c2").onclick = ()=>{
         socket.emit("click", {id, idc:document.getElementById("c2id").content, idco:document.getElementById("c1id").content})
     }
-
-    socket.emit("get", {id});
-
-    socket.on("update", data=>{
-        update(data);
-    });
 
 });

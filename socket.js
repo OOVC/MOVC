@@ -5,7 +5,6 @@ module.exports = (io,db,PASS,filter)=>{
 
     io.on('connection', socket => {
         socket.on("click", data=>{
-            console.log(data);
             if(cached[data.id]){
                 let war = cached[data.id];
                 if(war.blocked) return;
@@ -16,7 +15,9 @@ module.exports = (io,db,PASS,filter)=>{
                 }
             } else{
                 cw.findOne({id:data.id}, (err, war)=>{
+                    if(!war) return;
                     if(war.blocked) return;
+                    if(Object.keys(war.countries).indexOf(data.idc)<0||Object.keys(war.countries).indexOf(data.idco)<0)
                     cached[data.id] = war;
                     cw.updateOne({id: data.id}, {$set: {countries:{[data.idc]:war.countries[data.idc]+1, [data.idco]:war.countries[data.idco]}}});
                     io.emit("update", {[data.idc]:war.countries[data.idc]+1, [data.idco]:war.countries[data.idco]});

@@ -12,7 +12,6 @@ module.exports = (io,db,PASS,filter)=>{
                 if(cached[data.id].countries[data.idc]%100===0||cached[data.id].countries[data.idco]%100===0){
                     console.log("saved")
                     cw.updateOne({id: data.id}, {$set: {countries:{[data.idc]:war.countries[data.idc], [data.idco]:war.countries[data.idco]}}});
-                    delete cached[data.id];
                 }
             } else{
                 cw.findOne({id:data.id}, (err, war)=>{

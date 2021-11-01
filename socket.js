@@ -6,7 +6,7 @@ module.exports = (io,db,PASS,filter)=>{
         socket.on("click", data=>{
             cw.findOne({id:data.id}, (err, war)=>{
                 cw.updateOne({id: data.id}, {$set: {countries:{[data.idc]:war.countries[data.idc]+1, [data.idco]:war.countries[data.idco]}}});
-                socket.emit("update", {[data.idc]:war.countries[data.idc]+1, [data.idco]:war.countries[data.idco]});
+                io.emit("update", {[data.idc]:war.countries[data.idc]+1, [data.idco]:war.countries[data.idco]});
             });
         });
         socket.on("get", data=>{

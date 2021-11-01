@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include("../components/bootstrap") %> 
+        <%- include("../components/head") %> 
+        <title>Клик войны</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.min.js" integrity="sha512-N5JbZMETkl+0SZh5l8OA2VxSfF120owfQyy54iAXTJIKuqAn3A9TrNz1ypB55o8aSU5MxaodEgv74wGUvgUynQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <meta id="id" content="<%=war.id%>">
+        <meta id="c1id" content="<%= c1.idc %>">
+        <meta id="c2id" content="<%= c2.idc %>">
+        <script src="/public/js/clickwars.js"></script>
+    </head>
+    <body>
+        <%- include("../components/menu") %> 
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h1>
+                        <%=war.name%>
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <%= c1.name %>
+                </div>
+                <div class="col text-center">
+                    <%= c2.name %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img src="<%= c1.img %>" class="bordert w-100">
+                </div>
+                <div class="col">
+                    <img src="<%= c2.img %>" class="bordert w-100">
+                </div>
+            </div>
+            <div class="row m-2">
+                <div class="col text-center" id="c1c">
+                </div>
+                <div class="col text-center" id="c2c">
+                </div>
+            </div>
+            <div class="row m-2">
+                <div class="col">
+                    <div class="progress">
+                            <div class="progress-bar bg-danger" id="c1p" role="progressbar" style="width: 0%"></div>
+                            <div class="progress-bar bg-info" id="c2p" role="progressbar" style="width: 0%"></div>
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <input type="button" class="btn btn-primary" id="c1" value="<%= c1.name %>">
+                </div>
+                <div class="col text-center">
+                    <input type="button" class="btn btn-primary" id="c2" value="<%= c2.name %>">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

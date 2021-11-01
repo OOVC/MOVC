@@ -2,8 +2,11 @@ const express = require("express");
 const { MongoClient } = require("mongodb");
 
 const app = express();
-const server = require("http").createServer(app);
-const io = require('socket.io')(server);
+const http = require('http');
+const server = http.createServer(app);
+
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 const favicon = require('serve-favicon');
 app.set("view engine", "ejs");
@@ -33,7 +36,7 @@ mongoClient.connect((err, client)=>{
 	require("./socket")(io,  db, PASS, filter);
 });
 
-app.listen(PORT, ()=>{ console.log(`Listening https on ${PORT}`)});
+server.listen(PORT, ()=>{ console.log(`Listening https on ${PORT}`)});
 
 function filter( obj, filtercheck) {
     let result = {}; 

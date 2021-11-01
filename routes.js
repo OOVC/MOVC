@@ -15,6 +15,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 	let cachedvalutes = {};
     let co = db.collection("countries");
 	let pending = db.collection("pending-countries");
+	let clickwars = db.collection("clickwars");
 	let deleted = db.collection("deleted-countries");
 	let geo = db.collection("geo");
 	let valutes = db.collection("valutes");
@@ -74,6 +75,17 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 			}
         });
     });
+	
+	app.get("/clickwars/:war", (req, res)=>{
+		clickwars.findOne({id:req.params.war}, (err, war)=>{
+			if(!war) return res.redirect("/notfound");
+			co.findOne({idc:Object.keys(war.countries)[0]}, (err, c1)=>{
+				co.findOne({idc:Object.keys(war.countries)[1]}, (err, c2)=>{
+					res.render("pages/cl-wars", {war, c1, c2});
+				});
+			});
+		});
+	});
 
 	app.get('/currencies', (req, res)=>{
         valutes.find({}).toArray((err, valutes)=>{

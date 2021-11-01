@@ -26,16 +26,9 @@ module.exports = (io,db,PASS,filter)=>{
             }
         });
         socket.on("get", data=>{
-            if(cached[data.id]){
-                let war = cached[data.id];
-                socket.emit("update", {[data.idc]:war.countries[data.idc], [data.idco]:war.countries[data.idco]});
-            } else{
-                cw.findOne({id:data.id}, (err, war)=>{
-                    if(!war) return;
-                    cached[data.id] = war;
-                    socket.emit("update", {[Object.keys(war.countries)[0]]:war.countries[Object.keys(war.countries)[0]], [Object.keys(war.countries)[1]]:war.countries[Object.keys(war.countries)[1]]});
-                });
-            }
+            cw.findOne({id:data.id}, (err, war)=>{
+                socket.emit("update", {[Object.keys(war.countries)[0]]:war.countries[Object.keys(war.countries)[0]], [Object.keys(war.countries)[1]]:war.countries[Object.keys(war.countries)[1]]});
+            });
         });
     });
 }

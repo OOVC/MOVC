@@ -5,6 +5,7 @@ module.exports = (io,db,PASS,filter)=>{
 
     io.on('connection', socket => {
         socket.on("click", data=>{
+            console.log(data);
             if(cached[data.id]){
                 let war = cached[data.id];
                 if(war.blocked) return;

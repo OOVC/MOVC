@@ -3,6 +3,11 @@ window.addEventListener("load", ()=>{
     let socket = io();
     let id = document.getElementById("id").content;
 
+    function random(min, max){
+        const rand = min + Math.random() * (max - min + 1);
+        return Math.floor(rand);
+    }
+
     function update(data) {
         let clicks = Object.values(data);
         let sum = clicks[0]+clicks[1];
@@ -27,10 +32,16 @@ window.addEventListener("load", ()=>{
     });
 
     document.getElementById("c1").onclick = ()=>{
+        document.getElementById("c1").style.position = "absolute";
+        document.getElementById("c1").style.left = `${random(10, 20)}%`;
+        document.getElementById("c1").style.top = `${random(10, 20)}%`;
         socket.emit("click", {id, idc:document.getElementById("c1id").content, idco:document.getElementById("c2id").content})
     }
 
     document.getElementById("c2").onclick = ()=>{
+        document.getElementById("c2").style.position = "absolute";
+        document.getElementById("c2").style.left = `${random(30, 40)}%`;
+        document.getElementById("c2").style.top = `${random(30, 40)}%`;
         socket.emit("click", {id, idc:document.getElementById("c2id").content, idco:document.getElementById("c1id").content})
     }
 

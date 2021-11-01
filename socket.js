@@ -17,7 +17,7 @@ module.exports = (io,db,PASS,filter)=>{
                 cw.findOne({id:data.id}, (err, war)=>{
                     if(!war) return;
                     if(war.blocked) return;
-                    if(Object.keys(war.countries).indexOf(data.idc)<0||Object.keys(war.countries).indexOf(data.idco)<0)
+                    if(Object.keys(war.countries).indexOf(data.idc)<0||Object.keys(war.countries).indexOf(data.idco)<0) return;
                     cached[data.id] = war;
                     cw.updateOne({id: data.id}, {$set: {countries:{[data.idc]:war.countries[data.idc]+1, [data.idco]:war.countries[data.idco]}}});
                     io.emit("update", {[data.idc]:war.countries[data.idc]+1, [data.idco]:war.countries[data.idco]});

@@ -7,6 +7,7 @@ module.exports = (io,db,PASS,filter)=>{
         socket.on("click", data=>{
             if(cached[data.id]){
                 let war = cached[data.id];
+                if(!war) return;
                 if(Object.keys(war.countries).indexOf(data.idc)<0||Object.keys(war.countries).indexOf(data.idco)<0) return;
                 if(war.blocked) return;
                 cached[data.id].countries = {[data.idc]:war.countries[data.idc]+1, [data.idco]:war.countries[data.idco]}
@@ -28,6 +29,7 @@ module.exports = (io,db,PASS,filter)=>{
         socket.on("clickminus", data=>{
             if(cached[data.id]){
                 let war = cached[data.id];
+                if(!war) return;
                 if(Object.keys(war.countries).indexOf(data.idc)<0||Object.keys(war.countries).indexOf(data.idco)<0) return;
                 if(war.blocked) return;
                 cached[data.id].countries = {[data.idc]:war.countries[data.idc]-1, [data.idco]:war.countries[data.idco]}

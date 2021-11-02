@@ -13,6 +13,7 @@ window.addEventListener("load", ()=>{
         let sum = clicks[0]+clicks[1];
 
         document.getElementById("allclick").innerHTML = sum+" кликов";
+        document.getElementById("count").innerHTML = data.count+" игроков";
 
         let numsofc = {};
         numsofc.c1 = document.getElementById("c1id").content === Object.keys(data)[0] ? Object.keys(data)[0] : Object.keys(data)[1];

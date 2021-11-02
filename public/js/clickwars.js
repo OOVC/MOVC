@@ -32,17 +32,19 @@ window.addEventListener("load", ()=>{
     });
 
     document.getElementById("c1").onclick = ()=>{
-        document.getElementById("c1").style.position = "absolute";
-        document.getElementById("c1").style.left = `${random(10, 20)}%`;
-        document.getElementById("c1").style.top = `${random(10, 20)}%`;
         socket.emit("click", {id, idc:document.getElementById("c1id").content, idco:document.getElementById("c2id").content})
     }
 
     document.getElementById("c2").onclick = ()=>{
-        document.getElementById("c2").style.position = "absolute";
-        document.getElementById("c2").style.left = `${random(30, 40)}%`;
-        document.getElementById("c2").style.top = `${random(30, 40)}%`;
         socket.emit("click", {id, idc:document.getElementById("c2id").content, idco:document.getElementById("c1id").content})
+    }
+
+    document.getElementById("c1minus").onclick = ()=>{
+        socket.emit("clickminus", {id, idc:document.getElementById("c1id").content, idco:document.getElementById("c2id").content})
+    }
+
+    document.getElementById("c2minus").onclick = ()=>{
+        socket.emit("clickminus", {id, idc:document.getElementById("c2id").content, idco:document.getElementById("c1id").content})
     }
 
 });

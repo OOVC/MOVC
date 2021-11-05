@@ -148,7 +148,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 			pending.findOne({cidc: req.params.country}, (err, val)=>{
 				co.findOne({idc:val?.idc}, (err, original)=>{
 					if(val){
-						if(original&&(original?.googid==req.session?.passport?.user?.id)) val.authorised = true;
+						if(original&&(original?.googid==val?.googid)) val.authorised = true;
 						res.render("pages/pending-country", {country: val});
 					} else {
 						res.render("pages/notfound")

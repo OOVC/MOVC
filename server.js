@@ -18,7 +18,7 @@ app.use((req,res,next)=>{
 });
 
 app.use("/public",express.static(`${__dirname}/public`));
-app.use(favicon(`${__dirname}/public/favicon.ico`));
+app.use(favicon(`${__dirname}/public/favicon.png`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

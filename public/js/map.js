@@ -10,6 +10,11 @@ function logland(...str) {
         let info = str.shift();
         console.log(`%c ${info} `, "color:white; background-color: #0c7700; border-radius:10px;", ...str)   
 }
+function logoccupation(...str) {
+        let info = str.shift();
+        console.log(`%c ${info} `, "color:white; background-color: #B22222; border-radius:10px;", ...str)   
+}
+
 
 function onMapClick(e) {
         loginfo("Даблклик", e.latlng.toString())
@@ -34,7 +39,7 @@ window.onload = async ()=>{
         var popup = L.popup();
         
         loginfo("Получаю карту");
-        let geo = await fetch("https://artegoser.github.io/movc/geo/geo.geojson");
+        let geo = await fetch("https://artegoser.github.io/movc/geo/geo.geojson"); //await fetch("/geo.geojson"); 
         loginfo("Получаю страны MOVC");
         let coarray = await fetch("/api/countries");
         coarray = await coarray.json();
@@ -45,24 +50,52 @@ window.onload = async ()=>{
         for(let i = 0; i<geo.length; i++){
                 function onEachFeature(feature, layer) { 
                         if(feature.geometry.type==="Polygon")
-                                layer.bindPopup(`
-                                <div class="row" style="padding: 5px;">
-                                        <div class="col-md-12 col-sm-12" style="padding: 0px;">
-                                                <img class="w-100" src="${country.img}" style="border-radius: 20px 20px 0px 0px;">
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 text-center" style="border-radius: 0px 0px 20px 20px; background-color: rgb(231, 231, 231)">
-                                                <h5 class="card-title">
-                                                        ${country.name}
-                                                        <a href="/erth2#marks">
-                                                ${ country.verified === true ?
-                                                `<svg id="completely" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
-                                                        <title>Соответствует стандартам ERTH2</title>
-                                                </svg>`: ""}
-                                                </a>
-                                                </h5>
-                                                <a href="countries/${country.idc}" class="btn btn-primary bordert mb-2" style="color:white;">Подробнее</a>
-                                        </div>
-                                </div>`);
+                                if(feature.properties.type==="occupation"){
+                                        layer.bindPopup(`
+                                                <div class="row" style="padding: 5px;">
+                                                        <div class="col-md-12 col-sm-12 text-center bordert" style="color:white;background-color:red;padding: 0px;">
+                                                                Зона оккупации
+                                                        </div>
+                                                </div>
+                                                <div class="row" style="padding: 5px;">
+                                                        <div class="col-md-12 col-sm-12" style="padding: 0px;">
+                                                                <img class="w-100" src="${country.img}" style="border-radius: 20px 20px 0px 0px;">
+                                                        </div>
+                                                        <div class="col-md-12 col-sm-12 text-center" style="border-radius: 0px 0px 20px 20px; background-color: rgb(231, 231, 231)">
+                                                                <h5 class="card-title">
+                                                                        ${country.name}
+                                                                        <a href="/erth2#marks">
+                                                                ${ country.verified === true ?
+                                                                `<svg id="completely" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+                                                                        <title>Соответствует стандартам ERTH2</title>
+                                                                </svg>`: ""}
+                                                                </a>
+                                                                </h5>
+                                                                <a href="countries/${country.idc}" class="btn btn-primary bordert mb-2" style="color:white;">Подробнее</a>
+                                                        </div>
+                                                </div>`
+                                        );
+                                } else{
+                                        layer.bindPopup(`
+                                                <div class="row" style="padding: 5px;">
+                                                        <div class="col-md-12 col-sm-12" style="padding: 0px;">
+                                                                <img class="w-100" src="${country.img}" style="border-radius: 20px 20px 0px 0px;">
+                                                        </div>
+                                                        <div class="col-md-12 col-sm-12 text-center" style="border-radius: 0px 0px 20px 20px; background-color: rgb(231, 231, 231)">
+                                                                <h5 class="card-title">
+                                                                        ${country.name}
+                                                                        <a href="/erth2#marks">
+                                                                ${ country.verified === true ?
+                                                                `<svg id="completely" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+                                                                        <title>Соответствует стандартам ERTH2</title>
+                                                                </svg>`: ""}
+                                                                </a>
+                                                                </h5>
+                                                                <a href="countries/${country.idc}" class="btn btn-primary bordert mb-2" style="color:white;">Подробнее</a>
+                                                        </div>
+                                                </div>`
+                                        );
+                                }
                         else if(feature.geometry.type==="Point"){
                                 if(feature.properties.type==="city"||feature.properties.type==="capital-city"){
                                         layer.bindPopup(`
@@ -113,6 +146,8 @@ window.onload = async ()=>{
                         logmarker("Получаю маркер:", (geo[i].properties.name||geo[i].properties.Name));
                 } else if(geo[i].properties.type==="sand"||geo[i].properties.type==="grass"||geo[i].properties.type==="water"){
                         logland("Получаю кусок земли:", (geo[i].properties.name||geo[i].properties.Name));
+                } else if(geo[i].properties.type==="occupation"){
+                        logoccupation("Получаю зону оккупации:", (geo[i].properties.name||geo[i].properties.Name));
                 } else{
                         loginfo("Получаю страну:", (geo[i].properties.name||geo[i].properties.Name));
                 }
@@ -149,6 +184,16 @@ window.onload = async ()=>{
                                         color: "#75cff0",
                                         weight: 0,
                                         fillOpacity: 1
+                                }
+                        }).addTo(movc);
+                } else if(geo[i].properties.type==="occupation"){
+                        L.geoJSON(geo[i],{
+                                onEachFeature: onEachFeature,
+                                style:{
+                                        fillColor: geo[i].properties.fill,
+                                        color: geo[i].properties.stroke,
+                                        weight: 0.8,
+                                        fillOpacity: 0.4
                                 }
                         }).addTo(movc);
                 }

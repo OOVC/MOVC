@@ -168,6 +168,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 	app.get('/geojs', async (req, res)=>{
 		res.redirect(`https://geo.movc.xyz/#data=data:text/x-url,https://movc.xyz/geo/${req.query.idc}`);
 	});
+	// app.get("/geo.geojson", (req,res)=>res.sendFile("D:/github/artegoser.github.io/movc/geo/geo.geojson"))
 	app.get('/geo/:country', async (req, res)=>{
 		res.header("Access-Control-Allow-Origin", "https://geo.movc.xyz");
         let geo = await (await fetch("https://artegoser.github.io/movc/geo/geo.geojson")).json();

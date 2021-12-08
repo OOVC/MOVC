@@ -1,4 +1,11 @@
 window.addEventListener("load", ()=>{
+    function sortObj(obj) {
+        let sortable = Object.entries(obj);
+        sortable.sort(function(a, b) {
+            return b[1] - a[1];
+        });
+        return Object.fromEntries(sortable);
+    }
     async function go(){
         let geo = (await (await fetch("https://artegoser.github.io/movc/geo/geo.geojson")).json()).features;
         let coarray = await (await fetch("/api/countries")).json();
@@ -7,7 +14,6 @@ window.addEventListener("load", ()=>{
 
         let totalarea = {};
         let totalcolonies = {};
-        let totaltypes = {};
 
         for(let g of geo){
             if(g.geometry.type === "Polygon"&&!((g.properties?.type === "sand")||(g.properties?.type === "grass")||(g.properties?.type === "water"))){
@@ -20,8 +26,10 @@ window.addEventListener("load", ()=>{
             }
         }
 
+        totalarea = sortObj(totalarea);
+        totalcolonies = sortObj(totalcolonies);
+
         let countryids = Object.keys(totalarea);
-        let indexcountryids = Object.keys(countries); 
         let indexcountrynames = coarray.map((v)=>v.name) 
         let countryranks = coarray.map((v)=>v.rank);
 
@@ -30,7 +38,7 @@ window.addEventListener("load", ()=>{
         let tchart = new Chart(tctx, {
             type: 'doughnut',
             data: {
-                labels: countryids,
+                labels: Object.keys(totalarea),
                 datasets: [{
                     data: Object.values(totalarea),
                     backgroundColor: palette('tol-rainbow', countryids.length).map(function(hex) {
@@ -57,7 +65,7 @@ window.addEventListener("load", ()=>{
         let cchart = new Chart(cctx, {
             type: 'doughnut',
             data: {
-                labels: countryids,
+                labels: Object.keys(totalcolonies),
                 datasets: [{
                     data: Object.values(totalcolonies),
                     backgroundColor: palette('tol-rainbow', countryids.length).map(function(hex) {

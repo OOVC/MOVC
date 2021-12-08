@@ -170,7 +170,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 	});
 	
 	app.get("/stats", (req,res)=>{
-		res.render("pages/charts")
+		res.render("pages/stats");
 	});
 	// app.get("/geo.geojson", (req,res)=>res.sendFile("D:/github/artegoser.github.io/movc/geo/geo.geojson"))
 	app.get('/geo/:country', async (req, res)=>{

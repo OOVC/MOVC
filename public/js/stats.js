@@ -7,7 +7,7 @@ window.addEventListener("load", ()=>{
         return Object.fromEntries(sortable);
     }
     async function go(){
-        let geo = (await (await fetch("https://github.com/artegoser/MOVC-static/raw/main/geo/geo.geojson")).json()).features;
+        let geo = (await (await fetch("https://raw.githubusercontent.com/artegoser/MOVC-static/main/geo/geo.geojson")).json()).features;
         let coarray = await (await fetch("/api/countries")).json();
         let countries = {};
         for(let i = 0; i<coarray.length; i++) countries[coarray[i].idc] = coarray[i]; 

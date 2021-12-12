@@ -157,7 +157,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 		});
     });
 	app.get('/geo', (req, res)=>{
-		res.redirect("https://github.com/artegoser/MOVC-static/raw/main/geo/geo.geojson");
+		res.redirect("https://raw.githubusercontent.com/artegoser/MOVC-static/main/geo/geo.geojson");
     });
 	app.get('/getgeo', async (req, res)=>{
 		co.find({}).sort({rank:-1}).toArray((_,arr)=>{
@@ -175,7 +175,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 	// app.get("/geo.geojson", (req,res)=>res.sendFile("D:/github/artegoser.github.io/movc/geo/geo.geojson"))
 	app.get('/geo/:country', async (req, res)=>{
 		res.header("Access-Control-Allow-Origin", "https://geo.movc.xyz");
-        let geo = await (await fetch("https://github.com/artegoser/MOVC-static/raw/main/geo/geo.geojson")).json();
+        let geo = await (await fetch("https://raw.githubusercontent.com/artegoser/MOVC-static/main/geo/geo.geojson")).json();
 		geo.features = geo.features.filter((val)=>{
 			if(val.properties.name===req.params.country) return true;
 		});

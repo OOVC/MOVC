@@ -39,7 +39,7 @@ window.onload = async ()=>{
         var popup = L.popup();
         
         loginfo("Получаю карту");
-        let geo = await fetch("https://github.com/artegoser/MOVC-static/raw/main/geo/geo.geojson"); //await fetch("/geo.geojson"); 
+        let geo = await fetch("https://raw.githubusercontent.com/artegoser/MOVC-static/main/geo/geo.geojson"); //await fetch("/geo.geojson"); 
         loginfo("Получаю страны MOVC");
         let coarray = await fetch("/api/countries");
         coarray = await coarray.json();

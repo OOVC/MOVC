@@ -9,6 +9,6 @@
             <%- include("../components/irlmark" , {country:val[i]}) %>
         </h5>
         <p class="card-text"><%-val[i]?.description?.replace(/(<([^>]+)>)/gi,'\n').slice(0, 500)+"..."%></p>
-        <a href= "/countries/<%=val[i].idc%>" class="btn btn-primary mb-2">Подробнее</a>
+        <a data-tilt href= "/countries/<%=val[i].idc%>" class="btn btn-primary mb-2">Подробнее</a>
     </div>
 </div>

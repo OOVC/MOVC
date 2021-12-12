@@ -16,7 +16,7 @@
             <form action="/countries" method="get">
                 <div class="input-group mb-3">
                     <input type="text" name="search" class="form-control bordert" <%- req.query.search ? "value=\""+req.query.search+"\"" : "" %>  >
-                    <div class="input-group-append">
+                    <div class="input-group-append" data-tilt >
                         <button class="btn btn-outline-secondary borderright" type="submit">Поиск</button>
                     </div>
                 </div>
@@ -36,5 +36,6 @@
                 }  
             %>
         </div>
+        <%- include("../components/tilt") %>
     </body>
 </html>

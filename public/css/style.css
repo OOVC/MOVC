@@ -139,3 +139,16 @@ border-radius: 0px 20px 20px 0px;
 input[type=button], input[type=submit]{
     border-radius: 20px !important;
 }
+
+.thumbnail {
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.caption {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+    transform: translateZ(50px);
+}

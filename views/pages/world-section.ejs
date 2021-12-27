@@ -1,0 +1,24 @@
+
+<html>
+    <head>
+        <%- include("../components/bootstrap") %> 
+        <%- include("../components/head") %> 
+        <link rel="stylesheet" type="text/css" href="/public/css/map.css" />
+        <script src="/public/js/world-section.js"></script> 
+        <meta name="description" content="MOVC - Раздел мира. Карта раздела мира"/>
+        <title>Раздел мира</title>
+        <style>
+            body{
+                background-image: url(https://artegoser.github.io/movc/icons/mapdownload.gif);
+                background-position: center;
+                background-color: #a3a3a3;
+            }
+        </style>
+    </head>
+    <body>
+        <%-include("../components/menu") %> 
+        <%-include("../components/leaflet")%>
+        <h1 id="preloader" class="preload text-center">Подождите...</h1>
+        <div id="map"></div>
+    </body>
+</html>

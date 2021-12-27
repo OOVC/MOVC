@@ -192,6 +192,9 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 	app.get('/map', (req, res)=>{
         res.render("pages/map");
     });
+	app.get('/world-section', (req, res)=>{
+        res.render("pages/world-section");
+    });
 	app.get('/erth2', (req, res)=>{
 		co.find({verified:true}).count((_,v)=>{
         	res.render("pages/erth2", {count:v});

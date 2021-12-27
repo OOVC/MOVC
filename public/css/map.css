@@ -11,7 +11,6 @@ body{
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    color: white; background-color: #a3a3a3; padding: 10px; border-radius: 20px;
+    z-index: 100;
 }
-
-.preload{animation:preload 5s; color: white; background-color: #a3a3a3; padding: 10px; border-radius: 20px;}
-@keyframes preload{0%{box-shadow:none;}100%{box-shadow:0 1px 0 rgb(104, 104, 104),0 2px 0 rgb(104, 104, 104),0 3px 0 rgb(104, 104, 104),0 4px 0 rgb(104, 104, 104),0 5px 0 rgb(104, 104, 104),0 6px 0 rgb(104, 104, 104),0 7px 0 rgb(104, 104, 104),0 8px 0 rgb(104, 104, 104),0 9px 0 rgb(104, 104, 104)}}

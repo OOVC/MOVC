@@ -1,16 +1,20 @@
 function loginfo(...str) {
+     document.getElementById("preloader").innerHTML = str.join(" ");
      let info = str.shift();
      console.log(`%c ${info} `, "color:white; background-color: #78d6fa; border-radius:10px;", ...str)   
 }
 function logmarker(...str) {
+        document.getElementById("preloader").innerHTML = str.join(" ");
         let info = str.shift();
         console.log(`%c ${info} `, "color:white; background-color: #9300fc; border-radius:10px;", ...str)   
 }
 function logland(...str) {
+        document.getElementById("preloader").innerHTML = str.join(" ");
         let info = str.shift();
         console.log(`%c ${info} `, "color:white; background-color: #0c7700; border-radius:10px;", ...str)   
 }
 function logoccupation(...str) {
+        document.getElementById("preloader").innerHTML = str.join(" ");
         let info = str.shift();
         console.log(`%c ${info} `, "color:white; background-color: #B22222; border-radius:10px;", ...str)   
 }
@@ -21,12 +25,13 @@ function onMapClick(e) {
 }
 
 window.onload = async ()=>{
-        document.getElementById("map").style.height = document.documentElement.scrollHeight-document.getElementById("menu").scrollHeight+"px";
-        document.getElementById("map").style.width = document.documentElement.scrollWidth+"px";
+        let map = document.getElementById("map");
+        map.style.height = document.documentElement.scrollHeight-document.getElementById("menu").scrollHeight+"px";
+        map.style.width = document.documentElement.scrollWidth+"px";
         window.addEventListener(`resize`, event => {
-                document.getElementById("map").style.height = document.documentElement.scrollHeight-document.getElementById("menu").scrollHeight+"px";
-                document.getElementById("map").style.width = document.documentElement.scrollWidth+"px";
-        }, false);
+                map.style.height = document.documentElement.scrollHeight-document.getElementById("menu").scrollHeight+"px";
+                map.style.width = document.documentElement.scrollWidth+"px";
+        });
         let movc = L.map('map').setView([53.19, 41.28], 6);
         movc.on('dblclick', onMapClick);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -36,8 +41,8 @@ window.onload = async ()=>{
                 zoomOffset: -1,
                 accessToken: 'pk.eyJ1IjoiYXJ0ZWdvc2VyIiwiYSI6ImNrcDVhaHF2ejA2OTcyd3MxOG84bWRhOXgifQ.N3knNrPFIceTHVcIoPPcEQ'
         }).addTo(movc);
-        var popup = L.popup();
-        
+        map.classList.add("ghost");
+
         loginfo("Получаю карту");
         let geo = await fetch("https://raw.githubusercontent.com/artegoser/MOVC-static/main/geo/geo.geojson"); //await fetch("/geo.geojson"); 
         loginfo("Получаю страны MOVC");
@@ -46,7 +51,6 @@ window.onload = async ()=>{
         let countries = {};
         for(let i = 0; i<coarray.length; i++) countries[coarray[i].idc] = coarray[i]; 
         geo = (await geo.json()).features;
-        document.getElementById("map").classList.add("ghost");
         for(let i = 0; i<geo.length; i++){
                 function onEachFeature(feature, layer) { 
                         if(feature.geometry.type==="Polygon")
@@ -210,6 +214,6 @@ window.onload = async ()=>{
                         }).addTo(movc);
                 }
         }
-        document.getElementById("preloader").style.display = 'none';
-        document.getElementById("map").classList.remove("ghost")
+        gsap.to("#map", {duration: 0.5, opacity: 1});
+        gsap.to("#preloader", {duration: 5, opacity: 0, scale: 0.2});
 }

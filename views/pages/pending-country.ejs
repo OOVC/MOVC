@@ -3,7 +3,7 @@
   <head>
     <%- include("../components/bootstrap") %> 
     <%- include("../components/head") %> 
-    <%- include("../components/wow") %>
+    
     <meta name="robots" content="noindex" />
     <link rel="stylesheet" href="/public/css/menu.css">
     <title>Описание - <%= country.name %></title>
@@ -37,10 +37,10 @@
             Наш сайт не несет ответственности за материалы размещенные на данной странице. Все материалы размещаются пользователями. Мы стараемся удалять запрещенный контент.
         </div>  
         <div class="row">
-          <div class="col-sm-12 col-md animate__backInLeft wow">
+          <div class="col-sm-12 col-md">
             <img class="bordert" style="width: 100%;"src=<%= country.img %>>
           </div>
-          <div class="col animate__fadeInRight wow" id="card-body">
+          <div class="col" id="card-body">
             <div class="row">
                 <span><b>ID:</b> <%- country.idc %></span>
             </div>
@@ -58,7 +58,7 @@
             </div>
           </div>
         </div>
-        <div class="row bordert animate__fadeInUp wow" style="background-color: #e4e4e4; margin-top: 5px;">
+        <div class="row bordert" style="background-color: #e4e4e4; margin-top: 5px;">
             <div class="col text-center">
                 <p>Правитель: <a href= <%= country.contact %>> <%= country.owner %> </a></p>
               </div>

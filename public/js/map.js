@@ -214,6 +214,6 @@ window.onload = async ()=>{
                         }).addTo(movc);
                 }
         }
-        gsap.to("#map", {duration: 0.5, opacity: 1});
-        gsap.to("#preloader", {duration: 5, opacity: 0, scale: 0.2});
+        gsap.to("#map", {duration: 2, opacity: 1});
+        gsap.to("#preloader", {duration: 2, opacity: 0, scale: 0.2});
 }

@@ -3,7 +3,7 @@
   <head>
     <%- include("../components/bootstrap") %> 
     <%- include("../components/head") %> 
-    <%- include("../components/wow") %>
+    
     <link rel="stylesheet" href="/public/css/menu.css">
     <title>Описание - <%= country.name %></title>
     <style>
@@ -16,10 +16,10 @@
       <%- include("../components/menu") %> 
       <div class="container borderc" style="background-color: #f8f9fa;">
           <div class="row">
-            <div class="col-sm-12 col-md animate__backInLeft wow" itemscope itemtype="http://schema.org/ImageObject">
+            <div class="col-sm-12 col-md" itemscope itemtype="http://schema.org/ImageObject">
               <img class="bordert" style="width: 100%;"src=<%= country.img %> itemprop="contentUrl">
             </div>
-            <div class="col animate__fadeInRight wow">
+            <div class="col">
               <div class="row">
                 <div class="col">
                   <span>
@@ -61,16 +61,16 @@
             <%
               if(country.description.length>900){
                 %>
-                <div class="row animate__fadeInRight wow">
+                <div class="row">
                     <span class="col" id="description"><b>Описание:</b> <%- country.description %></span>
                 </div>
                 <%
               }
             %>
           </div>
-          <div class="row bordert animate__fadeInUp wow" style="background-color: #e4e4e4; margin-top: 5px;">
+          <div class="row bordert" style="background-color: #e4e4e4; margin-top: 5px;">
               <div class="col text-center">
-                  <p>Правитель: <a href= <%= country.contact %>> <%= country.owner %> </a></p>
+                  <p>Правитель: <a href="<%= country.contact %>"><%= country.owner %></a></p>
                 </div>
                 <% 
                   if(country.site) {

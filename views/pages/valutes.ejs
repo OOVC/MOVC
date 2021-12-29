@@ -3,7 +3,7 @@
     <head>
         <%- include("../components/bootstrap") %> 
         <%- include("../components/head") %> 
-        <%- include("../components/wow") %>
+        
         <meta name="description" content="Виртуальные валюты в регистре MOVC"/>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="/public/js/valute.js"></script>
@@ -47,7 +47,7 @@
                 for(let i = 0; i<valutes.length; i++){
                     if(i%6==0){
                         %>
-                            <div class="row animate__fadeInUp wow text-center" style="padding: 5px;">
+                            <div class="row text-center" style="padding: 5px;">
                                 <%- include("../components/cuads") %>
                             </div>
                         <%

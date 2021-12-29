@@ -1,14 +1,14 @@
-<div class="row animate__fadeInUp wow" style="padding: 5px;">
+<div class="row blurin" style="padding: 5px;">
     <div class="col-md-6 col-sm-12" style="padding: 0px;">
-        <img class="borderl w-100" src="<%=val[i].img%>" alt="фото не представлено">
+        <img class="borderl w-100 glass" src="<%=country.img%>" alt="фото не представлено">
     </div>
-    <div class="col-md-6 col-sm-12 borderr" style="background-color: rgb(231, 231, 231)">
+    <div class="col-md-6 col-sm-12 borderr glass" style="background-color: rgba(255, 255, 255, 0.363);">
         <h5 class="card-title">
-            <%=val[i].name%>
-            <%- include("../components/erth2mark" , {country:val[i]}) %>
-            <%- include("../components/irlmark" , {country:val[i]}) %>
+            <%=country.name%>
+            <%- include("../components/erth2mark" , {country}) %>
+            <%- include("../components/irlmark" , {country}) %>
         </h5>
-        <p class="card-text"><%-val[i]?.description?.replace(/(<([^>]+)>)/gi,'\n').slice(0, 500)+"..."%></p>
-        <a data-tilt href= "/countries/<%=val[i].idc%>" class="btn btn-primary mb-2">Подробнее</a>
+        <p class="card-text"><%-country?.description?.replace(/(<([^>]+)>)/gi,'\n').slice(0, 500)+"..."%></p>
+        <a data-tilt href= "/countries/<%=country.idc%>" class="btn btn-primary mb-2">Подробнее</a>
     </div>
 </div>

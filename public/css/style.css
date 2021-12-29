@@ -152,3 +152,15 @@ input[type=button], input[type=submit]{
     width: 100%;
     transform: translateZ(50px);
 }
+
+.glass {
+    box-shadow: 0 0 1rem 0 rgba(41, 39, 39, 0.2);
+    background: inherit;
+}
+.glass:before {
+        box-shadow: inset 0 0 2000px rgba(241, 241, 241, 0.5);
+}
+
+.blurin {
+    display: none;
+}

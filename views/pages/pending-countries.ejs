@@ -3,7 +3,7 @@
     <head>
         <%- include("../components/bootstrap") %> 
         <%- include("../components/head") %> 
-        <%- include("../components/wow") %>
+        
         <meta name="robots" content="noindex" />
         <title>Виртуальные государства</title>
         <style>
@@ -18,9 +18,6 @@
             <div class="alert alert-danger mb-0 text-center" style="border-radius: 20px; padding: 5px;" role="alert">
                 Наш сайт не несет ответственности за материалы размещенные на данной странице. Все материалы размещаются пользователями. Мы стараемся удалять запрещенный контент.
             </div>
-            <div class="alert alert-success mb-0 text-center" style="border-radius: 20px; padding: 5px;" role="alert">
-                Пиши <a href="https://vk.com/mapofvc">сюда</a>, чтобы подтвердить свою заявку.
-            </div>
             <div class="alert alert-dark text-center" style="border-radius: 20px; padding: 5px;" role="alert">
                 Государств ждущих подтверждения <%= count %> <a class="text-succes" href="/req-country">Подать заявку</a>
             </div>
@@ -28,7 +25,7 @@
                 for(let i = 0; i<val.length; i++){
                     if(i%3==0){
                         %>
-                        <div class="row animate__fadeInUp wow" style="padding: 5px;">
+                        <div class="row" style="padding: 5px;">
                             <%- include("../components/coads") %>
                         </div>
                         <%

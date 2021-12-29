@@ -3,7 +3,7 @@
     <head>
         <%- include("../components/bootstrap") %> 
         <%- include("../components/head") %> 
-        <%- include("../components/wow") %>
+        
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="/public/js/valute.js"></script>
         <script src="/public/js/chart.js"></script>
@@ -26,10 +26,10 @@
                         img = "https://i.imgur.com/c1o49lc.png";
                     }
                 %> 
-                <div class="col-sm-12 col-md animate__backInLeft wow" itemscope itemtype="http://schema.org/ImageObject">
+                <div class="col-sm-12 col-md" itemscope itemtype="http://schema.org/ImageObject">
                     <img class="bordert" style="width: 100%;" src="<%= img %>" itemprop="contentUrl">
                 </div>
-                <div class="col-sm-12 col-md animate__fadeInRight wow">
+                <div class="col-sm-12 col-md">
                     <div class="row" style="margin: 5px;">
                         <h2 class="text-center bg-primary bordert" style="color: white;">
                             <%= idc %> - <%= name %> 

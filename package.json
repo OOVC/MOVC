@@ -17,7 +17,7 @@
     "passport-google-oauth": "^2.0.0",
     "serve-favicon": "^2.5.0",
     "socket.io": "^4.0.1",
-    "vk-io": "^4.3.2"
+    "vk-io": "^4.4.0"
   },
   "devDependencies": {},
   "scripts": {

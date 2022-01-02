@@ -131,12 +131,14 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
         co.findOne({idc: req.params.country}, (err, val)=>{
 			if(val) res.render("pages/country", {country: val});
 			else {
+				res.status(404);
 				res.render("pages/notfound")
 			}
 		});
     });
 	app.get('/countries', (req, res)=>{
         co.find(req.query.search ? {$or:[{description:{$regex:req.query.search, $options:"gi"}}, {name:{$regex:req.query.search, $options:"gi"}}, {owner:{$regex:req.query.search, $options:"gi"}}, {type:{$regex:req.query.search, $options:"gi"}}]} : {}, {name:1, idc:1, description:1}).sort({rank:-1}).toArray((err, results)=>{
+			if(results.length===0) res.status(404);
 			if(err) throw err;
 			co.countDocuments((_,v)=>{
 				res.render("pages/countries", {val:results, count:v, req});

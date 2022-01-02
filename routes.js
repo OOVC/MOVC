@@ -141,7 +141,7 @@ module.exports = async (app,db,PASS,filter,skl, VKTOKEN, GCID, GCS)=>{
 			if(results.length===0) res.status(404);
 			if(err) throw err;
 			co.countDocuments((_,v)=>{
-				res.render("pages/countries", {val:results, count:v, req});
+				res.render("pages/countries", {val:results, count:v, req, res});
 			});
 		});
     });

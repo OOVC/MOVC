@@ -53,6 +53,7 @@
                 let pagearray = arrayslice(val);
                 let pagecountries = pagearray[page-1];
                 if(!pagecountries){
+                    res.status(404);
                     %>
                         <div class="row blurin">
                             <h1 class="text-center m-10">Вы забрались за пределы наблюдаемой вселенной...</h1>

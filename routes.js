@@ -13,8 +13,25 @@ var recaptcha = new Recaptcha(
   process.env.SECAPTCHA || require("./secure.json").secretcaptcha
 );
 
-const MarkdownIt = require("markdown-it"),
-  md = new MarkdownIt();
+const md = require("markdown-it")({
+  typographer: true,
+  linkify:true
+})
+  .use(require("markdown-it-sub"))
+  .use(require("markdown-it-sup"))
+  .use(require("markdown-it-footnote"))
+  .use(require("markdown-it-deflist"))
+  .use(require("markdown-it-abbr"))
+  .use(require("markdown-it-emoji"));
+
+md.renderer.rules.table_open = function () {
+  return '<table class="table table-striped">\n';
+};
+
+md.renderer.rules.blockquote_open = function () {
+  return '<blockquote class="blockquote">\n';
+};
+
 const removeMd = require("remove-markdown");
 
 module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
@@ -185,7 +202,13 @@ module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
         if (results.length === 0) res.status(404);
         if (err) throw err;
         co.countDocuments((_, v) => {
-          res.render("pages/countries", { val: results, count: v, req, res, removeMd});
+          res.render("pages/countries", {
+            val: results,
+            count: v,
+            req,
+            res,
+            removeMd,
+          });
         });
       });
   });
@@ -244,7 +267,11 @@ module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
       .find({}, { name: 1, cidc: 1, description: 1 })
       .toArray((err, results) => {
         pending.countDocuments((_, v) => {
-          res.render("pages/pending-countries", { val: results, count: v, removeMd});
+          res.render("pages/pending-countries", {
+            val: results,
+            count: v,
+            removeMd,
+          });
         });
       });
   });

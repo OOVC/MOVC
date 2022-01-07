@@ -112,8 +112,20 @@ let options = [
         <meta id="idcinfo" content="<%=query.idc%>"/>
         <title>Отправить заявку на добавление в индексирование государств</title>
         <script>
-            window.addEventListener("load", ()=>{
-                var simplemde = new SimpleMDE({ element: document.getElementById("description"), forceSync: true});
+            window.addEventListener("load", () => {
+                var simplemde = new SimpleMDE({
+                    element: document.getElementById("description"), forceSync: true, 
+                    insertTexts: {
+                        image: ["![](", ")"],
+                        link: ["[](", ")"],
+                    },
+                    autosave: {
+                        enabled: true,
+                        uniqueId: "DescData",
+                        delay: 1000,
+                    },
+                    SpellChecker: true
+                });
             });
         </script>
     </head>

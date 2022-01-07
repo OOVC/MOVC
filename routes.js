@@ -313,8 +313,7 @@ module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
     } else if (country.verified === "false") country.verified = false;
     else if (country.verified) country.verified = true;
     else if (!country.verified) country.verified = "pending";
-    if (country.md === true)
-      country.description = md.render(country.description);
+    country.description = md.render(country.description);
     res.render("pages/country", { country });
   });
   app.post("/approve-country", (req, res) => {

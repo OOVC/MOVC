@@ -53,45 +53,6 @@ let options = [
     {
         title:"Описание*",
         id:"description",
-        help:`
-        <script>
-            function insert(text) {
-                let txtarea = document.getElementById("description");
-                let start = txtarea.selectionStart;
-                let end = txtarea.selectionEnd;
-                let finText = txtarea.value.substring(0, start) + text + txtarea.value.substring(end);
-                txtarea.value = finText;
-                txtarea.focus();
-                txtarea.selectionEnd = ( start == end )? (end + text.length) : end ;
-            }
-            function bold(){
-                insert("bold()")
-            }
-            function url(){
-                insert("url()")
-            }
-            function texturl(){
-                insert("trl(,)")
-            }
-            function imgs(){
-                insert("img()")
-            }
-            function custom(){
-                insert("custom(,);un;")
-            }
-            function audio(){
-                insert("audio()")
-            }
-        </script>
-        <div class="row text-center">
-            <div class="col"><input type="button" onclick=bold() value="Жирный шрифт" class="btn btn-outline-dark btn-sm"></div>
-            <div class="col"><input type="button" onclick=url() value="Ссылка" class="btn btn-outline-dark btn-sm"></div>
-            <div class="col"><input type="button" onclick=texturl() value="Текстовая ссылка" class="btn btn-outline-dark btn-sm"></div>
-            <div class="col"><input type="button" onclick=imgs() value="Изображение" class="btn btn-outline-dark btn-sm"></div>
-            <div class="col"><input type="button" onclick=audio() value="Аудио" class="btn btn-outline-dark btn-sm"></div>
-            <div class="col"><input type="button" onclick=custom() value="Доп. информация" class="btn btn-outline-dark btn-sm"></div>
-        </div>
-        `,
         type:"area",
         required:true
     },
@@ -144,9 +105,17 @@ let options = [
         <%- include("../components/head") %> 
         <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
         <script src="/public/js/autobind.js"></script> 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+        <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
         <meta name="description" content="Хочешь чтобы твое государство индексировалось в MOVC? Тогда подай заявку здесь. Форма подачи заявки в виртуальное государство"/>
         <meta id="idcinfo" content="<%=query.idc%>"/>
         <title>Отправить заявку на добавление в индексирование государств</title>
+        <script>
+            window.addEventListener("load", ()=>{
+                var simplemde = new SimpleMDE({ element: document.getElementById("description"), forceSync: true});
+            });
+        </script>
     </head>
     <body>
         <script src="/public/js/prevent.js"></script>

@@ -1,12 +1,12 @@
 <div class="row" style="padding: 5px;">
     <div class="col-md-6 col-sm-12" style="padding: 0px;">
-        <img class="borderl w-100" src="<%=val[i].img%>" alt="фото не представлено">
+        <img class="borderl w-100" src="<%=country.img%>" alt="фото не представлено">
     </div>
     <div class="col-md-6 col-sm-12 borderr" style="background-color: rgb(231, 231, 231)">
         <h5 class="card-title">
-            <%=val[i].name%> 
+            <%=country.name%> 
         </h5>
-        <p class="card-text"><%-val[i]?.description?.replace(/(<([^>]+)>)/gi,'\n').slice(0, 500)+"..."%></p>
-        <a href= "/pending-countries/<%=val[i].cidc%>" class="btn btn-primary bordert mb-2">Подробнее</a>
+        <p class="card-text"><%-country.md ? removeMd(country?.description) : country?.description?.replace(/(<([^>]+)>)/gi,'').slice(0, 500)+"..."%></p>
+        <a href= "/pending-countries/<%=country.cidc%>" class="btn btn-primary bordert mb-2">Подробнее</a>
     </div>
 </div>

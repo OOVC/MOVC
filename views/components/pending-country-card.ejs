@@ -6,7 +6,7 @@
         <h5 class="card-title">
             <%=country.name%> 
         </h5>
-        <p class="card-text"><%-country.md ? removeMd(country?.description) : country?.description?.replace(/(<([^>]+)>)/gi,'').slice(0, 500)+"..."%></p>
+        <p class="card-text"><%-(country.md ? removeMd(country?.description).slice(0, 500) : country?.description?.replace(/(<([^>]+)>)/gi,'').slice(0, 500))+"..."%></p>
         <a href= "/pending-countries/<%=country.cidc%>" class="btn btn-primary bordert mb-2">Подробнее</a>
     </div>
 </div>

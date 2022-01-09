@@ -4,6 +4,15 @@ const { MongoClient } = require("mongodb");
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
+const { I18n } = require('i18n');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+
+const i18n = new I18n({
+    locales: ['en', 'ru'],
+    directory: path.join(__dirname, 'locales'),
+    cookie: "lang"
+});
 
 const { Server } = require("socket.io");
 const io = new Server(server);
@@ -17,6 +26,8 @@ app.use((req,res,next)=>{
     else res.redirect(`https://movc.xyz${req.originalUrl}`);
 });
 
+app.use(cookieParser());
+app.use(i18n.init);
 app.use("/public",express.static(`${__dirname}/public`));
 app.use(favicon(`${__dirname}/public/favicon.png`));
 app.use(express.json());

@@ -4,5 +4,11 @@
 	"currencies": "Сurrencies",
 	"stats": "Statistics",
 	"pending-countries": "Pending countries",
-	"geo-editor": "Geo editor"
+	"geo-editor": "Geo editor",
+	"sponsor-me": "Sponsor me",
+	"total-countries":"Total Countries",
+	"search":"Search",
+	"next-page":"Next page",
+	"previous-page":"Previous page",
+	"more-about":"More about"
 }

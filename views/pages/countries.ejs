@@ -18,7 +18,7 @@
         <%- include("../components/menu") %> 
         <div class="container borderc mb-0 mt-1">
             <div class="alert alert-dark text-center" style="border-radius: 20px; padding: 5px; background-color: rgba(0, 255, 136, 0.048);" role="alert">
-                Всего государств в индексации <%= count %> <%- req.query.search ? "(Найдено "+val.length+")"  : "" %>
+                <%= __("total-countries") %> : <%= count %> <%- req.query.search ? "(Найдено "+val.length+")"  : "" %>
             </div>
         </div>
         <div class="container borderc">
@@ -26,19 +26,19 @@
                 <div class="input-group mt-0 mb-3">
                     <input type="text" name="search" class="form-control bordert" <%- req.query.search ? "value=\""+req.query.search+"\"" : "" %>  >
                     <div class="input-group-append" data-tilt >
-                        <button class="btn btn-outline-secondary borderright" type="submit">Поиск</button>
+                        <button class="btn btn-outline-secondary borderright" type="submit"><%= __("search") %></button>
                     </div>
                 </div>
             </form>
             <div class="row">
                 <div class="col pl-0 pr-1">
-                    <a class="btn btn-secondary bordert" href="<%- req.query.search ? "/countries?search="+req.query.search+"&page="+(page-1) : "/countries?page="+(page-1) %>">Назад</a>
+                    <a class="btn btn-secondary bordert" href="<%- req.query.search ? "/countries?search="+req.query.search+"&page="+(page-1) : "/countries?page="+(page-1) %>"><%= __("previous-page") %></a>
                 </div>
                 <div class="col pl-0 pr-1 text-center">
                     <span class="btn btn-secondary bordert"><%=page%></span>
                 </div>
                 <div class="col pl-0 pr-1 text-end">
-                    <a class="btn btn-secondary bordert" href="<%- req.query.search ? "/countries?search="+req.query.search+"&page="+(page+1) : "/countries?page="+(page+1) %>">Вперед</a>
+                    <a class="btn btn-secondary bordert" href="<%- req.query.search ? "/countries?search="+req.query.search+"&page="+(page+1) : "/countries?page="+(page+1) %>"><%= __("next-page") %></a>
                 </div>
             </div>
             <%  

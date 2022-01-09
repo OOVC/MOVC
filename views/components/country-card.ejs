@@ -9,6 +9,6 @@
             <%- include("../components/irlmark" , {country}) %>
         </h5>
         <p class="card-text"><%-(country.md ? removeMd(country?.description).slice(0, 500) : country?.description?.replace(/(<([^>]+)>)/gi,'').slice(0, 500))+"..."%></p>
-        <a data-tilt href= "/countries/<%=country.idc%>" class="btn btn-primary mb-2">Подробнее</a>
+        <a data-tilt href= "/countries/<%=country.idc%>" class="btn btn-primary mb-2"><%= __("more-about") %></a>
     </div>
 </div>

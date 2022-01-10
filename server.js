@@ -9,7 +9,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 
 const i18n = new I18n({
-    locales: ['en', 'ru', 'its'],
+    locales: ['en', 'ru', 'it'],
     directory: path.join(__dirname, 'locales'),
     cookie: "lang"
 });

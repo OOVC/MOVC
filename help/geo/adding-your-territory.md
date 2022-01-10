@@ -2,7 +2,7 @@
 
 ## 1. Редактор
 1. Переходим [сюда](https://artegoser.github.io/geoMOVC) - это простой редактор территорий(патч geojson под movc).
-2. Смотрим [здесь](https://github.com/artegoser/MOVC/blob/main/geo/geo.geojson).
+2. Смотрим [здесь](https://github.com/OOVC/MOVC/blob/main/geo/geo.geojson).
 3. Ваша новая территория не должна занимать ту которая уже есть.
 ## 2. Добавление территорий.
 1. Выбираем инструмент "Нарисовать территорию(полигон)"  ![](https://github.com/artegoser/artegoser.github.io/raw/master/movc/docs/imgs/geo-1.png)

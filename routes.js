@@ -229,7 +229,7 @@ module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
   });
   app.get("/geo", (req, res) => {
     res.redirect(
-      "https://raw.githubusercontent.com/artegoser/MOVC-static/main/geo/geo.geojson"
+      "https://raw.githubusercontent.com/OOVC/MOVC-static/main/geo/geo.geojson"
     );
   });
   app.get("/getgeo", async (req, res) => {
@@ -254,7 +254,7 @@ module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
     res.header("Access-Control-Allow-Origin", "https://geo.movc.xyz");
     let geo = await (
       await fetch(
-        "https://raw.githubusercontent.com/artegoser/MOVC-static/main/geo/geo.geojson"
+        "https://raw.githubusercontent.com/OOVC/MOVC-static/main/geo/geo.geojson"
       )
     ).json();
     geo.features = geo.features.filter((val) => {

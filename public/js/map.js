@@ -34,7 +34,14 @@ window.onload = async ()=>{
         });
         let movc = L.map('map').setView([53.19, 41.28], 6);
         movc.on('dblclick', onMapClick);
-        L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}`/*'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}'*/).addTo(movc);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                maxZoom: 11,
+                id: 'artegoser/ckql6k3xd2yqw17n2awmke9d5',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'pk.eyJ1IjoiYXJ0ZWdvc2VyIiwiYSI6ImNrcDVhaHF2ejA2OTcyd3MxOG84bWRhOXgifQ.N3knNrPFIceTHVcIoPPcEQ'
+        }).addTo(movc);
+        // L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}`).addTo(movc);
         map.classList.add("ghost");
 
         loginfo("Получаю карту");

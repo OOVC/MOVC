@@ -6,7 +6,7 @@
         <%- include("../components/head") %> 
         <%- include("../components/gsap") %>
         <meta name="description" content="Виртуальные государства в регистре MOVC. Здесь ты можешь посмотреть на виртуальные государства и узнать информацию о них"/>
-        <title>Виртуальные государства <%- req.query.search ? "Поиск: "+req.query.search  : "" %></title>
+        <title>Виртуальные государства <%- req.query.search ? __("search")+" "+req.query.search  : "" %></title>
         <style>
             body{
                 background-color: #dfdfdf;
@@ -18,7 +18,7 @@
         <%- include("../components/menu") %> 
         <div class="container borderc mb-0 mt-1">
             <div class="alert alert-dark text-center" style="border-radius: 20px; padding: 5px; background-color: rgba(0, 255, 136, 0.048);" role="alert">
-                <%= __("total-countries") %> : <%= count %> <%- req.query.search ? "(Найдено "+val.length+")"  : "" %>
+                <%= __("total-countries") %> : <%= count %> <%- req.query.search ? "("+__("found")+" "+val.length+")"  : "" %>
             </div>
         </div>
         <div class="container borderc">
@@ -56,7 +56,7 @@
                     res.status(404);
                     %>
                         <div class="row blurin">
-                            <h1 class="text-center m-10">Вы забрались за пределы наблюдаемой вселенной...</h1>
+                            <h1 class="text-center m-10"><%= __("universe-end") %></h1>
                         </div>
                     <%
                 }
@@ -76,13 +76,13 @@
                     %>
                         <div class="row mb-2 blurin">
                             <div class="col pl-0 pr-1">
-                                <a class="btn btn-secondary bordert" href="<%- req.query.search ? "/countries?search="+req.query.search+"&page="+(page-1) : "/countries?page="+(page-1) %>">Назад</a>
+                                <a class="btn btn-secondary bordert" href="<%- req.query.search ? "/countries?search="+req.query.search+"&page="+(page-1) : "/countries?page="+(page-1) %>"><%= __("previous-page") %></a>
                             </div>
                             <div class="col pl-0 pr-1 text-center">
                                 <span class="btn btn-secondary bordert"><%=page%></span>
                             </div>
                             <div class="col pl-0 pr-1 text-end">
-                                <a class="btn btn-secondary bordert" href="<%- req.query.search ? "/countries?search="+req.query.search+"&page="+(page+1) : "/countries?page="+(page+1) %>">Вперед</a>
+                                <a class="btn btn-secondary bordert" href="<%- req.query.search ? "/countries?search="+req.query.search+"&page="+(page+1) : "/countries?page="+(page+1) %>"><%= __("next-page") %></a>
                             </div>
                         </div>
                     <%

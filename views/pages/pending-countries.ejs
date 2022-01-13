@@ -16,10 +16,10 @@
         <%- include("../components/menu") %> 
         <div class="container borderc" style="background-color: #f8f9fa;">
             <div class="alert alert-danger mb-0 text-center" style="border-radius: 20px; padding: 5px;" role="alert">
-                Наш сайт не несет ответственности за материалы размещенные на данной странице. Все материалы размещаются пользователями. Мы стараемся удалять запрещенный контент.
+                <%=__("not-responsible")%>
             </div>
             <div class="alert alert-dark text-center" style="border-radius: 20px; padding: 5px;" role="alert">
-                Государств ждущих подтверждения <%= count %> <a class="text-succes" href="/req-country">Подать заявку</a>
+                <%=__("waiting-confirmation-countries")%> <%= count %> <a class="text-succes" href="/req-country"><%=__("submit-req")%></a>
             </div>
             <%
                 for(let i = 0; i<val.length; i++){

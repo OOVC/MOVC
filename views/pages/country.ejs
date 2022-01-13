@@ -39,12 +39,12 @@
                 </div>
               </div>
               <div class="row">
-                  <span><b>Тип правления:</b> <%= country.type %></span>
+                  <span><b><%=__("government-form")%>:</b> <%= country.type %></span>
               </div>
               <%
                 if(country.rank){%>
                   <div class="row">
-                      <span><b>Рейтинг:</b> <%= country.rank %></span>
+                      <span><b><%=__("rating")%>:</b> <%= country.rank %></span>
                   </div>
                 <%}
               %>
@@ -53,7 +53,7 @@
                 if(country.description.length<=900){
                   %>
                   <div class="row">
-                      <span><b>Описание:</b> <%- country.description %></span>
+                      <span><b><%=__("description")%>:</b> <%- country.description %></span>
                   </div>  
                   <%
                 }
@@ -63,7 +63,7 @@
               if(country.description.length>900){
                 %>
                 <div class="row">
-                    <span class="col" id="description"><b>Описание:</b> <%- country.description %></span>
+                    <span class="col" id="description"><b><%=__("description")%>:</b> <%- country.description %></span>
                 </div>
                 <%
               }
@@ -77,21 +77,21 @@
                   if(country.site) {
                     %> 
                       <div class="col text-center">
-                          <a href= <%= country.site %>>Сайт</a>
+                          <a href= <%= country.site %>><%=__("website")%></a>
                       </div> 
                     <%
                   }
                   if(country.vk) {
                     %> 
                       <div class="col text-center">
-                          <a href= <%= country.vk %>>вк</a>
+                          <a href= <%= country.vk %>><%=__("vk")%></a>
                       </div> 
                     <%
                   }
                 %>
                 
                 <div class="col text-center">
-                  <p>Дата основания: <%= country.date %></p>
+                  <p><%=__("date-of-foundation")%>: <%= country.date %></p>
                 </div>
           </div>
         </div>

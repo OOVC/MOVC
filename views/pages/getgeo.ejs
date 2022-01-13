@@ -2,7 +2,7 @@
 <% 
 let options = [
     {
-        title:"id страны*",
+        title:__("country-id"),
         id:"idc",
         required:true,
         type:"many",
@@ -15,7 +15,7 @@ let options = [
     <head>
         <%- include("../components/bootstrap") %> 
         <%- include("../components/head") %> 
-        <meta name="description" content="Хочешь отредактировать свою страну тогда тебе сюда."/>
+        <meta name="description" content="Хочешь отредактировать территорию своей страны тогда тебе сюда."/>
         <title>Редактировать территорию страны</title>
     </head>
     <body>
@@ -27,7 +27,7 @@ let options = [
             <form action="/geojs" method="GET">
                 <%- include("../components/form", {options}) %> 
                 <div class="row m-5">
-                    <input type="submit" value="Отправить" id="send" class="btn btn-dark">
+                    <input type="submit" value="<%=__("send")%>" id="send" class="btn btn-dark">
                 </div>
             </form>
         </div>

@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/OOVC/MOVC/compare/v1.0.0...v2.0.0) (2022-01-21)
+
+
+### Features
+
+* another commit to v2.0 ([ed1fa7d](https://github.com/OOVC/MOVC/commit/ed1fa7d06796c0a86295638b0d777bbf2b85c501))
+
+
+### BREAKING CHANGES
+
+* new version
+
 # 1.0.0 (2022-01-21)
 
 

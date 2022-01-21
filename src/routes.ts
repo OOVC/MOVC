@@ -1,21 +1,26 @@
-const sha3 = require("js-sha3").sha3_224;
-const utils = require("./utils");
-const jwt = require("jsonwebtoken");
-const fetch = require("node-fetch");
-const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-const cookieSession = require("cookie-session");
-const Vkbot = require("./vk-logger");
-let fx = require("money");
-const Recaptcha = require("express-recaptcha").RecaptchaV2;
+import { sha3_224 as sha3 } from "js-sha3";
+import * as utils from "./utils";
+import * as jwt from "jsonwebtoken";
+import * as fetch from "node-fetch";
+import * as passport from "passport";
+import { OAuth2Strategy as GoogleStrategy } from "passport-google-oauth";
+import * as cookieSession from "cookie-session";
+import { Logger as Vkbot } from "./vk-logger";
+import * as fx from "money";
+import { RecaptchaV2 as Recaptcha } from "express-recaptcha";
+import * as Md from "markdown-it";
+
 var recaptcha = new Recaptcha(
-  process.env.SICAPTCHA || require("./secure.json").sitecaptcha,
-  process.env.SECAPTCHA || require("./secure.json").secretcaptcha
+  global.movc.SICAPTCHA,
+  global.movc.SECAPTCHA
 );
 
-const md = require("markdown-it")({
+const md: Md = new Md({
+  html: true,
   typographer: true,
-  linkify:true
+  linkify: true,
+  xhtmlOut: false,
+  breaks: false,
 })
   .use(require("markdown-it-sub"))
   .use(require("markdown-it-sup"))
@@ -34,8 +39,8 @@ md.renderer.rules.blockquote_open = function () {
 
 const removeMd = require("remove-markdown");
 
-module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
-  const vklog = new Vkbot(VKTOKEN);
+module.exports = async (app, db, skl) => {
+  const vklog = new Vkbot(global.movc.VKTOKEN);
   let cbr = await (
     await fetch("https://www.cbr-xml-daily.ru/latest.js")
   ).json();
@@ -45,19 +50,17 @@ module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
   let cachedvalutes = {};
   let co = db.collection("countries");
   let pending = db.collection("pending-countries");
-  let clickwars = db.collection("clickwars");
   let deleted = db.collection("deleted-countries");
   let geo = db.collection("geo");
   let valutes = db.collection("valutes");
   let ads = db.collection("ads");
-  let users = db.collection("google-auth-users");
   fx.rates = utils.addVirtCurrencies(fx, await valutes.find({}).toArray());
 
   passport.use(
     new GoogleStrategy(
       {
-        clientID: GCID,
-        clientSecret: GCS,
+        clientID: global.movc.GCID,
+        clientSecret: global.movc.GCS,
         callbackURL: "https://movc.xyz/gcallback",
       },
       function (accessToken, refreshToken, profile, done) {
@@ -75,7 +78,7 @@ module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
   app.use(
     cookieSession({
       name: "tuto-session",
-      keys: [PASS, VKTOKEN],
+      keys: [global.movc.PASS, global.movc.VKTOKEN],
     })
   );
 
@@ -118,17 +121,6 @@ module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
         case "ncimg":
           res.render("pages/ads/ncimg", { ads });
       }
-    });
-  });
-
-  app.get("/clickwars/:war", (req, res) => {
-    clickwars.findOne({ id: req.params.war }, (err, war) => {
-      if (!war) return res.redirect("/notfound");
-      co.findOne({ idc: Object.keys(war.countries)[0] }, (err, c1) => {
-        co.findOne({ idc: Object.keys(war.countries)[1] }, (err, c2) => {
-          res.render("pages/cl-wars", { war, c1, c2 });
-        });
-      });
     });
   });
 
@@ -313,7 +305,7 @@ module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
       return;
     }
     let pass = req.query.pass || country.pass;
-    if (pass && sha3(pass) == PASS) {
+    if (pass && sha3(pass) == global.movc.PASS) {
       pending.findOne({ cidc: country.cidc }, (err, val) => {
         if (err || !val) {
           return res.end(
@@ -351,7 +343,7 @@ module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
       return;
     }
     let pass = req.query.pass || country.pass;
-    if (pass && sha3(pass) == PASS) {
+    if (pass && sha3(pass) == global.movc.PASS) {
       pending.findOne({ idc: country.idc }, (err, val) => {
         if (!val) {
           res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
@@ -426,12 +418,12 @@ module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
 
     if (country.rank) country.rank = parseInt(country.rank);
 
-    country = filter(country, (val) => {
+    country = utils.filter(country, (val) => {
       return val !== "";
     });
     country.md = true;
     if (country.description === false) delete country.description;
-    if (pass && sha3(pass) == PASS) {
+    if (pass && sha3(pass) == global.movc.PASS) {
       co.updateOne(
         { idc: country.idc },
         { $set: country, $unset: { srcdescription: 1 } },
@@ -497,9 +489,9 @@ module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
       });
   });
   app.post("/api/currency/token", (req, res) => {
-    pass = req.body.pass;
-    if (pass && sha3(pass) == PASS) {
-      res.end(jwt.sign({ valute: req.body.valute }, PASS));
+    let pass = req.body.pass;
+    if (pass && sha3(pass) == global.movc.PASS) {
+      res.end(jwt.sign({ valute: req.body.valute }, global.movc.PASS));
     } else {
       res.end("hackerman");
     }
@@ -507,7 +499,7 @@ module.exports = async (app, db, PASS, filter, skl, VKTOKEN, GCID, GCS) => {
   app.post("/api/currency/update", (req, res) => {
     let tokenDec;
     try {
-      tokenDec = jwt.verify(req.body.token, PASS);
+      tokenDec = jwt.verify(req.body.token, global.movc.PASS);
     } catch (error) {
       return res.end("invalid token");
     }

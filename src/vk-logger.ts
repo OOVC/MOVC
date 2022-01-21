@@ -1,4 +1,4 @@
-const { VK } = require('vk-io');
+import { VK } from "vk-io";
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -6,7 +6,10 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-class Logger{
+export class Logger{
+    vk:VK
+    oids: Array<number>
+    mids: Array<number>
     constructor(VKTOKEN){
         this.vk = new VK({
             token:VKTOKEN
@@ -33,7 +36,7 @@ class Logger{
         }
     }
     async convsend(message){
-        let conversations = await this.vk.api.messages.getConversations();
+        let conversations = await this.vk.api.messages.getConversations({});
         for(let it of conversations.items){
             if(it.conversation?.chat_settings?.title === "ООВГ | Мировой Форум"){
                 this.vk.api.messages.send({
@@ -46,5 +49,3 @@ class Logger{
         }
     }
 }
-
-module.exports = Logger;

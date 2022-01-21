@@ -4,6 +4,7 @@
   "description": "Map Of Virtual Countries",
   "main": "server.js",
   "dependencies": {
+    "@types/node": "^17.0.10",
     "cookie-parser": "^1.4.6",
     "cookie-session": "^1.4.0",
     "ejs": "^3.1.6",
@@ -29,10 +30,18 @@
     "socket.io": "^4.0.1",
     "vk-io": "^4.4.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "^16.0.1",
+    "@commitlint/config-conventional": "^16.0.0",
+    "husky": "^7.0.4",
+    "typescript": "^4.5.4"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "postinstall": "tsc",
+    "start": "node ./dist/server.js",
+    "cstart": "tsc && node ./dist/server.js",
+    "prepare":"husky install"
   },
   "author": "artegoser",
   "license": "MIT"

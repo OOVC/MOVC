@@ -2,7 +2,6 @@ import * as express from "express";
 import { MongoClient } from "mongodb";
 import * as http from "http";
 import { I18n } from "i18n";
-import * as path from "path";
 import * as cookieParser from "cookie-parser";
 import * as favicon from "serve-favicon";
 import { rootPlusPath } from "./utils";

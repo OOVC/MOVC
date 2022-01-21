@@ -1,3 +1,15 @@
+# [1.0.0-beta.2](https://github.com/OOVC/MOVC/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2022-01-21)
+
+
+### Features
+
+* add core ([f0a2478](https://github.com/OOVC/MOVC/commit/f0a2478c11fc1d96f02878b07ff8a7605add59d1))
+
+
+### BREAKING CHANGES
+
+* adding core to movc
+
 # 1.0.0-beta.1 (2022-01-21)
 
 

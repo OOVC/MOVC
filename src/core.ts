@@ -1,1 +1,4 @@
-export class Core {}
+export class Core {
+  db: any;
+  constructor() {}
+}

@@ -1,3 +1,5 @@
+import { country } from "./interfaces";
+
 export class Core {
   db: any;
   countries: any;
@@ -9,5 +11,8 @@ export class Core {
     this.pending = db.collection("pending-countries");
     this.deleted = db.collection("deleted-countries");
     this.currencies = db.collection("currencies");
+  }
+  getCountry(name:string): country{
+    return 
   }
 }

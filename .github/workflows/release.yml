@@ -18,3 +18,5 @@ jobs:
         run: npm i
       - name: Install semantic-release extra plugins
         run: npm install --save-dev @semantic-release/changelog @semantic-release/git
+      - name: Release
+        run: npx semantic-release

@@ -115,11 +115,9 @@ let options = [
                 <script>
                     window.addEventListener("load", () => {
                         window.simplemde = new SimpleMDE({
-                            element: document.getElementById("description"), forceSync: true,
-                            insertTexts: {
-                                image: ["![](", ")"],
-                                link: ["[](", ")"],
-                            }
+                            element: document.getElementById("description"), 
+                            forceSync: true,
+                            spellChecker : false
                         });
                     });
                 </script>

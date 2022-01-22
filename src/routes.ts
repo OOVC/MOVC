@@ -9,11 +9,9 @@ import { Logger as Vkbot } from "./vk-logger";
 import * as fx from "money";
 import { RecaptchaV2 as Recaptcha } from "express-recaptcha";
 import * as Md from "markdown-it";
+import { Core } from "./core";
 
-var recaptcha = new Recaptcha(
-  global.movc.SICAPTCHA,
-  global.movc.SECAPTCHA
-);
+var recaptcha = new Recaptcha(global.movc.SICAPTCHA, global.movc.SECAPTCHA);
 
 const md: Md = new Md({
   html: true,
@@ -56,6 +54,8 @@ module.exports = async (app, db, skl) => {
   let ads = db.collection("ads");
   fx.rates = utils.addVirtCurrencies(fx, await valutes.find({}).toArray());
 
+  let movc = new Core(db);
+
   passport.use(
     new GoogleStrategy(
       {
@@ -84,6 +84,7 @@ module.exports = async (app, db, skl) => {
 
   app.use(passport.initialize());
   app.use(passport.session());
+  app.use(movc.checkCaptcha);
 
   app.get("/", (req, res) => {
     res.redirect("/countries");
@@ -396,79 +397,16 @@ module.exports = async (app, db, skl) => {
   app.get("/currencyedit", (req, res) => {
     res.render("pages/currencyedit");
   });
-  app.post("/addcountry", recaptcha.middleware.verify, (req, res) => {
-    let country = req.body || false;
-    if (!country || !country.idc) {
-      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-      res.end("Нет тела запроса, или не указан id страны");
+  app.post("/addcountry", recaptcha.middleware.verify, async (req, res) => {
+    let resp = await movc.addCountry(req);
+    if (resp.code === "badrequest") {
+      res.status(400);
+      res.end();
       return;
-    }
-    if (req.recaptcha.error && !(req.query.pass || country.pass)) {
-      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-      res.end("Подтвердите, что вы человек");
-      return;
-    }
-
-    let pass = country.pass;
-    delete country.pass;
-    delete country["g-recaptcha-response"];
-
-    country.verified = utils.convertFHT(country.verified);
-    country.irl = utils.convertFHT(country.irl);
-
-    if (country.rank) country.rank = parseInt(country.rank);
-
-    country = utils.filter(country, (val) => {
-      return val !== "";
-    });
-    country.md = true;
-    if (country.description === false) delete country.description;
-    if (pass && sha3(pass) == global.movc.PASS) {
-      co.updateOne(
-        { idc: country.idc },
-        { $set: country, $unset: { srcdescription: 1 } },
-        { upsert: true },
-        (err) => {
-          if (err) {
-            res.end(
-              JSON.stringify({
-                code: 2,
-                message: "Country is not added",
-                err: `${err}`,
-              })
-            );
-          } else {
-            res.redirect(`/countries/${country.idc}`);
-          }
-        }
-      );
-    } else {
-      country.cidc = sha3("" + Math.random() + Date.now());
-      if (!req.session?.passport?.user?.id) return res.redirect("/gauth");
-      country.googid = req.session.passport.user.id;
-      pending.insertOne(country, (err) => {
-        if (err) {
-          res.end(
-            JSON.stringify({
-              code: 2,
-              message: "Country is not added",
-              err: `${err}`,
-            })
-          );
-        } else {
-          res.redirect(`/pending-countries/${country.cidc}`);
-          if (country.oovg === "Да") {
-            vklog.oovgsend(
-              `Государство ${country.name} хочет вступить в ООВГ\n Ссылка - https://movc.xyz/pending-countries/${country.cidc}`
-            );
-          } else {
-            vklog.movcsend(
-              `Государство ${country.name} подало заявку в MOVC\n Ссылка - https://movc.xyz/pending-countries/${country.cidc}`
-            );
-          }
-        }
-      });
-    }
+    } else if (resp.code === "ok") res.redirect(resp.redirect);
+    else if (resp.code === "authreq") {
+      res.redirect("/gauth");
+    } else if (resp.code === "notadded") res.status(500);
   });
   app.get("/api/maingeo", (req, res) => {
     geo.findOne({ type: "main" }, (err, val) => {

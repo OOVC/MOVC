@@ -97,4 +97,7 @@ export class Core {
       });
     }
   }
+  getCountry(name:string): country{
+    return 
+  }
 }

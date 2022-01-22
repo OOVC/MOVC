@@ -1,3 +1,60 @@
+# [2.0.0](https://github.com/OOVC/MOVC/compare/v1.0.0...v2.0.0) (2022-01-21)
+
+
+### Features
+
+* another commit to v2.0 ([ed1fa7d](https://github.com/OOVC/MOVC/commit/ed1fa7d06796c0a86295638b0d777bbf2b85c501))
+
+
+### BREAKING CHANGES
+
+* new version
+
+# 1.0.0 (2022-01-21)
+
+
+### Bug Fixes
+
+* autobind ([a6b1716](https://github.com/OOVC/MOVC/commit/a6b17164160ccf5d8bf3ebb6176f50cc0e648790))
+* check new version of editor not necessary ([51af04d](https://github.com/OOVC/MOVC/commit/51af04dec3f41063c907bc6369377aa982ac72f0))
+* lang name ([efe499b](https://github.com/OOVC/MOVC/commit/efe499bd137d42d6caf20e7bbdc52261aea66de2))
+* map expression ([9e83f26](https://github.com/OOVC/MOVC/commit/9e83f2685801a25d0b283f6db047c713a8e6588f))
+* md ([818c8c4](https://github.com/OOVC/MOVC/commit/818c8c4ead0ceabbde0b70561c6f2b910c4969ae))
+* slicing ([68fcb94](https://github.com/OOVC/MOVC/commit/68fcb9422a2769c4b05690656ba356a50a153905))
+
+
+### Features
+
+* add core ([f0a2478](https://github.com/OOVC/MOVC/commit/f0a2478c11fc1d96f02878b07ff8a7605add59d1))
+* another core ([38c7edf](https://github.com/OOVC/MOVC/commit/38c7edf01693a3a19cf068f335e008e8cc20fa1a))
+* i18n ([880c067](https://github.com/OOVC/MOVC/commit/880c06785774d822988877f502764a62175befb1))
+
+
+### Performance Improvements
+
+* add more locales ([7bb8123](https://github.com/OOVC/MOVC/commit/7bb81237cce637b081755cd65a91349a329dfb76))
+* italiano ([48e5d42](https://github.com/OOVC/MOVC/commit/48e5d426e27c80239f3eb6a07f80cfde7ffc991a))
+* italiano ([9d7c78e](https://github.com/OOVC/MOVC/commit/9d7c78ef959649ed29b52210fe3897dd94475423))
+* more locales ([54564f7](https://github.com/OOVC/MOVC/commit/54564f73a9a11fa7f426eacb395d15997d7a1c4c))
+
+
+### Reverts
+
+* Revert "fix get" ([34b8cf1](https://github.com/OOVC/MOVC/commit/34b8cf1f857142cabc5c688637cd4269ca82edb8))
+* Revert "w" ([2ac3a02](https://github.com/OOVC/MOVC/commit/2ac3a022c42099e55ba11b821da498bad7fd3efc))
+* Revert "slingonia expansion" ([923799c](https://github.com/OOVC/MOVC/commit/923799c2b12dc0f1f8e668aba1cc780b2ce621a1))
+* Revert "Talonsk" ([03eb708](https://github.com/OOVC/MOVC/commit/03eb7088bfa1e96bab2ef06e25584cff5bcfad9c))
+* Revert "Talonsk fix" ([ad38147](https://github.com/OOVC/MOVC/commit/ad38147ee54bc9872f33a26fe4440c647fc561da))
+* Revert "Talonsk fix 2" ([f760a57](https://github.com/OOVC/MOVC/commit/f760a571dd97f3c5af8345bb09ceb0cd983b000c))
+* Revert "map startings" ([00472d9](https://github.com/OOVC/MOVC/commit/00472d9a81c60c0fe92b55ab85ec09ea4697c5a2))
+* Revert "ok..." ([6d627ec](https://github.com/OOVC/MOVC/commit/6d627ecf6ed4c6ce5681b94546f55db130a2366f))
+
+
+### BREAKING CHANGES
+
+* core
+* adding core to movc
+
 # [1.0.0-beta.2](https://github.com/OOVC/MOVC/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2022-01-21)
 
 

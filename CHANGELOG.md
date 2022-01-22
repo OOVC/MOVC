@@ -1,3 +1,11 @@
+## [2.2.1](https://github.com/OOVC/MOVC/compare/v2.2.0...v2.2.1) (2022-01-22)
+
+
+### Bug Fixes
+
+* editor ([da01086](https://github.com/OOVC/MOVC/commit/da010865c2307171318dc1ab505659050a2c8773))
+* redirect on countryadd ([b909dfd](https://github.com/OOVC/MOVC/commit/b909dfd47090099cb35e5c7eb0d6ad02cae059e2))
+
 # [2.2.0](https://github.com/OOVC/MOVC/compare/v2.1.1...v2.2.0) (2022-01-22)
 
 

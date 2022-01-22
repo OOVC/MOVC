@@ -63,7 +63,7 @@ export class Core {
             } else {
               res({
                 code: "ok",
-                redirect: `/countries/${country.cidc}`,
+                redirect: `/countries/${country.idc}`,
               });
             }
           }

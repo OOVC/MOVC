@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/OOVC/MOVC/compare/v2.2.2...v2.2.3) (2022-01-22)
+
+
+### Performance Improvements
+
+* fictional langs support ([f07f567](https://github.com/OOVC/MOVC/commit/f07f567b62aa91fa936a5b362c664b292d425ca7))
+
 ## [2.2.2](https://github.com/OOVC/MOVC/compare/v2.2.1...v2.2.2) (2022-01-22)
 
 

@@ -84,7 +84,6 @@ module.exports = async (app, db, skl) => {
 
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(movc.checkCaptcha);
 
   app.get("/", (req, res) => {
     res.redirect("/countries");
@@ -397,17 +396,22 @@ module.exports = async (app, db, skl) => {
   app.get("/currencyedit", (req, res) => {
     res.render("pages/currencyedit");
   });
-  app.post("/addcountry", recaptcha.middleware.verify, async (req, res) => {
-    let resp = await movc.addCountry(req);
-    if (resp.code === "badrequest") {
-      res.status(400);
-      res.end();
-      return;
-    } else if (resp.code === "ok") res.redirect(resp.redirect);
-    else if (resp.code === "authreq") {
-      res.redirect("/gauth");
-    } else if (resp.code === "notadded") res.status(500);
-  });
+  app.post(
+    "/addcountry",
+    recaptcha.middleware.verify,
+    movc.checkCaptcha,
+    async (req, res) => {
+      let resp = await movc.addCountry(req);
+      if (resp.code === "badrequest") {
+        res.status(400);
+        res.end();
+        return;
+      } else if (resp.code === "ok") res.redirect(resp.redirect);
+      else if (resp.code === "authreq") {
+        res.redirect("/gauth");
+      } else if (resp.code === "notadded") res.status(500);
+    }
+  );
   app.get("/api/maingeo", (req, res) => {
     geo.findOne({ type: "main" }, (err, val) => {
       res.end(JSON.stringify(val.geojson.features, null, "  "));

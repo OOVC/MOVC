@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/OOVC/MOVC/compare/v2.1.1...v2.2.0) (2022-01-22)
+
+
+### Features
+
+* html imgs in markdown ([99a08ac](https://github.com/OOVC/MOVC/commit/99a08ace9d9300ef05149d5edfdf401d3e6950e2))
+
 ## [2.1.1](https://github.com/OOVC/MOVC/compare/v2.1.0...v2.1.1) (2022-01-22)
 
 

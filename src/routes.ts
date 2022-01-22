@@ -17,8 +17,8 @@ const md: Md = new Md({
   html: true,
   typographer: true,
   linkify: true,
-  xhtmlOut: false,
-  breaks: false,
+  xhtmlOut: true,
+  breaks: true,
 })
   .use(require("markdown-it-sub"))
   .use(require("markdown-it-sup"))
@@ -29,6 +29,9 @@ const md: Md = new Md({
 
 md.renderer.rules.table_open = function () {
   return '<table class="table table-striped">\n';
+};
+md.renderer.rules.image = function (tokens, idx) {
+  return `</br><img class="countryimg" src="${tokens[idx].attrs[0][1]}"></img>\n`;
 };
 
 md.renderer.rules.blockquote_open = function () {

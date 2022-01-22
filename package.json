@@ -41,7 +41,8 @@
     "postinstall": "tsc",
     "start": "node ./dist/server.js",
     "cstart": "tsc && node ./dist/server.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev": "nodemon src/server.ts"
   },
   "author": "artegoser",
   "license": "MIT"

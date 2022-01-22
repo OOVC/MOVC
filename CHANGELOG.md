@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/OOVC/MOVC/compare/v2.1.0...v2.1.1) (2022-01-22)
+
+
+### Bug Fixes
+
+* addCountry bug ([201521d](https://github.com/OOVC/MOVC/commit/201521df7e1cdb895eefe9bef6b7a377b17d19bf))
+
 # [2.1.0](https://github.com/OOVC/MOVC/compare/v2.0.0...v2.1.0) (2022-01-22)
 
 

@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/OOVC/MOVC/compare/v2.2.1...v2.2.2) (2022-01-22)
+
+
+### Bug Fixes
+
+* mde ([a777fc1](https://github.com/OOVC/MOVC/commit/a777fc13c6e9902767e71e8aaaf464ae606476ed))
+
 ## [2.2.1](https://github.com/OOVC/MOVC/compare/v2.2.0...v2.2.1) (2022-01-22)
 
 

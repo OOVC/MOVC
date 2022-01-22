@@ -16,8 +16,8 @@ window.addEventListener("load", async () => {
   for (let i = 0; i < keys.length; i++) {
     try {
       if (keys[i] === "description") {
-        if (obj.md) simplemde.value(obj.description);
-        else simplemde.value(obj.srcdescription);
+        if (obj.md) mde.value(obj.description);
+        else mde.value(obj.srcdescription);
       } else {
         document.getElementById(keys[i]).value = obj[keys[i]];
       }

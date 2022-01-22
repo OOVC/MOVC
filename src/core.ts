@@ -1,6 +1,6 @@
 import { sha3_224 as sha3 } from "js-sha3";
 import { Collection, Db } from "mongodb";
-import { addCountryResp } from "./interfaces";
+import { addCountryResp, country } from "./interfaces";
 import * as utils from "./utils";
 import { Logger as Vkbot } from "./vk-logger";
 
@@ -97,7 +97,7 @@ export class Core {
       });
     }
   }
-  getCountry(name:string): country{
-    return 
+  getCountry(name: string): country {
+    return;
   }
 }

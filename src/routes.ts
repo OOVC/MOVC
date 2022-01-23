@@ -455,13 +455,13 @@ module.exports = async (app, db, skl) => {
     res.end("updated");
   });
   app.get("/robots.txt", (req, res) => {
-    res.sendFile(__dirname + "/robots.txt");
+    res.sendFile(utils.rootPlusPath("robots.txt"));
   });
   app.get("/sitemap.xml", (req, res) => {
-    res.sendFile(__dirname + "/sitemap.xml");
+    res.sendFile(utils.rootPlusPath("sitemap.xml"));
   });
   app.get("/ads.txt", (req, res) => {
-    res.sendFile(__dirname + "/ads.txt");
+    res.sendFile(utils.rootPlusPath("ads.txt"));
   });
   app.use((req, res) => {
     res.status(404);

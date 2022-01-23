@@ -1,3 +1,10 @@
+## [2.2.5](https://github.com/OOVC/MOVC/compare/v2.2.4...v2.2.5) (2022-01-23)
+
+
+### Bug Fixes
+
+* api header ([de18c6b](https://github.com/OOVC/MOVC/commit/de18c6b84f4b72f5ff304e70c5986afa193e3874))
+
 ## [2.2.4](https://github.com/OOVC/MOVC/compare/v2.2.3...v2.2.4) (2022-01-23)
 
 

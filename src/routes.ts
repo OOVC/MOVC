@@ -416,16 +416,19 @@ module.exports = async (app, db, skl) => {
     }
   );
   app.get("/api/maingeo", (req, res) => {
+    res.header("Access-Control-Allow-Origin", "contrall.movc.xyz");
     geo.findOne({ type: "main" }, (err, val) => {
       res.end(JSON.stringify(val.geojson.features, null, "  "));
     });
   });
   app.post("/api/country", (req, res) => {
+    res.header("Access-Control-Allow-Origin", "contrall.movc.xyz");
     co.findOne({ idc: req.body.idc }, (err, val) => {
       res.end(JSON.stringify(val, null, "  "));
     });
   });
   app.get("/api/countries", (req, res) => {
+    res.header("Access-Control-Allow-Origin", "contrall.movc.xyz");
     co.find({})
       .sort({ rank: -1 })
       .toArray((err, val) => {
@@ -442,6 +445,7 @@ module.exports = async (app, db, skl) => {
     }
   });
   app.post("/api/currency/update", (req, res) => {
+    res.header("Access-Control-Allow-Origin", "contrall.movc.xyz");
     let tokenDec;
     try {
       tokenDec = jwt.verify(req.body.token, global.movc.PASS);

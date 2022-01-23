@@ -1,3 +1,10 @@
+## [2.2.4](https://github.com/OOVC/MOVC/compare/v2.2.3...v2.2.4) (2022-01-23)
+
+
+### Bug Fixes
+
+* robots.txt + sitemap + ads ([c3cf271](https://github.com/OOVC/MOVC/commit/c3cf2717616773386adcc249892a283f2a6bb4a6))
+
 ## [2.2.3](https://github.com/OOVC/MOVC/compare/v2.2.2...v2.2.3) (2022-01-22)
 
 

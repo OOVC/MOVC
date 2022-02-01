@@ -17,10 +17,10 @@ let options = [
     },
     {
         title:"Ссылка на фото флага страны*",
-        id:"img",
+        id:"imgf",
         help:"Желательно фото с сайта imgur",
         required:true,
-        placeholder:"https://i.imgur.com/iNAUnTN.png"
+        type:"file"
     },
     {
         title:"Тип правления*",
@@ -132,6 +132,7 @@ let options = [
                 </div>
                 <form action="/addcountry" method="post">
                     <%- include("../components/form", {options}) %>
+                        <input type="hidden" id="img" name="img">
                         <div class="formrow row m-5">
                             <div class="col-lg-12"><label class="form-label">Подтвердите, что вы человек</label></div>
                             <div class="col-sm-12">

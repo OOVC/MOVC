@@ -3,6 +3,7 @@ import { Collection, Db } from "mongodb";
 import { addCountryResp, country } from "./interfaces";
 import * as utils from "./utils";
 import { Logger as Vkbot } from "./vk-logger";
+import * as fetch from "node-fetch";
 
 export class Core {
   db: Db;
@@ -27,7 +28,7 @@ export class Core {
   }
   public checkPass() {}
   public addCountry(req): Promise<addCountryResp> {
-    return new Promise((res, rej) => {
+    return new Promise(async (res, rej) => {
       let country = req.body || false;
       if (!country || !country.idc) {
         res({
@@ -48,9 +49,21 @@ export class Core {
         return val !== "";
       });
 
+      let response = await fetch(
+        `https://api.imgbb.com/1/upload?key=40d94828d1fee3990f32f9b56b3ee98a`,
+        {
+          method: "POST",
+          body: new URLSearchParams(`image=${country.img}`),
+        }
+      );
+      response = await response.json();
+      console.log(response);
+      delete country.imgf;
+      country.img = response.data.url;
+
       country.md = true;
       if (country.description === false) delete country.description;
-      if (pass && sha3(pass) == global.movc.PASS) {
+      if (pass && sha3(pass) === global.movc.PASS) {
         this.countries.updateOne(
           { idc: country.idc },
           { $set: country, $unset: { srcdescription: 1 } },
@@ -70,11 +83,11 @@ export class Core {
         );
       } else {
         country.cidc = sha3("" + Math.random() + Date.now());
-        if (!req.session?.passport?.user?.id)
-          res({
-            code: "authreq",
-          });
-        country.googid = req.session.passport.user.id;
+        // if (!req.session?.passport?.user?.id)
+        //   res({
+        //     code: "authreq",
+        //   });
+        country.googid = req.session.passport?.user?.id;
         this.pending.insertOne(country, (err) => {
           if (err) {
             res({

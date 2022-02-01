@@ -24,7 +24,7 @@ app.use((req, res, next): void => {
   if (
     req.headers.host === "movc.xyz" ||
     req.headers.host === "www.movc.xyz" ||
-    req.headers.host === "localhost"
+    req.headers.host === "localhost:81"
   )
     next();
   else res.redirect(`https://movc.xyz${req.originalUrl}`);
@@ -34,11 +34,11 @@ app.use(cookieParser());
 app.use(i18n.init);
 app.use("/public", express.static(rootPlusPath("public")));
 app.use(favicon(rootPlusPath("public", "favicon.png")));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
 const mongoClient: MongoClient = new MongoClient(global.movc.URL, {
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 mongoClient.connect((err, client) => {

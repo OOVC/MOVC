@@ -51,11 +51,12 @@ export class Core {
       delete country.imgf;
 
       country.md = true;
+      country.googid = req.session.passport?.user?.id;
       let original = await this.countries.findOne({ idc: country?.idc });
       if (country.description === false) delete country.description;
       if (
         (pass && sha3(pass) === global.movc.PASS) ||
-        (original && original?.googid == country?.googid)
+        original?.googid === country?.googid
       ) {
         this.countries.updateOne(
           { idc: country.idc },
@@ -83,7 +84,6 @@ export class Core {
           res({
             code: "authreq",
           });
-        country.googid = req.session.passport?.user?.id;
         this.pending.insertOne(country, (err) => {
           if (err) {
             res({

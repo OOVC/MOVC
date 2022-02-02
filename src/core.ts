@@ -74,6 +74,9 @@ export class Core {
             }
           }
         );
+        this.vklog.convsend(
+          `Государство ${country.name} обновило своё описание в movc\n Ссылка - https://movc.xyz/countries/${country.idc}`
+        );
       } else {
         country.cidc = sha3("" + Math.random() + Date.now());
         if (!req.session?.passport?.user?.id)

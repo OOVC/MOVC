@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/OOVC/MOVC/compare/v2.2.5...v2.3.0) (2022-02-02)
+
+
+### Features
+
+* img upload ([4542033](https://github.com/OOVC/MOVC/commit/4542033da71ffd343fbbcda3f1a8a97090036452))
+
 ## [2.2.5](https://github.com/OOVC/MOVC/compare/v2.2.4...v2.2.5) (2022-01-23)
 
 

@@ -2,7 +2,7 @@
   "name": "movc",
   "version": "0.0.0-semantic-release",
   "description": "Map Of Virtual Countries",
-  "main": "server.js",
+  "main": "src/server.ts",
   "dependencies": {
     "@types/node": "^17.0.10",
     "cookie-parser": "^1.4.6",
@@ -41,8 +41,7 @@
     "postinstall": "tsc",
     "start": "node ./dist/server.js",
     "cstart": "tsc && node ./dist/server.js",
-    "prepare": "husky install",
-    "dev": "nodemon src/server.ts"
+    "prepare": "husky install"
   },
   "author": "artegoser",
   "license": "MIT"

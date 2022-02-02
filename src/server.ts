@@ -34,11 +34,11 @@ app.use(cookieParser());
 app.use(i18n.init);
 app.use("/public", express.static(rootPlusPath("public")));
 app.use(favicon(rootPlusPath("public", "favicon.png")));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended: true, limit: "1mb" }));
 
 const mongoClient: MongoClient = new MongoClient(global.movc.URL, {
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 mongoClient.connect((err, client) => {

@@ -3,6 +3,7 @@ import { Collection, Db } from "mongodb";
 import { addCountryResp, country } from "./interfaces";
 import * as utils from "./utils";
 import { Logger as Vkbot } from "./vk-logger";
+import * as fetch from "node-fetch";
 
 export class Core {
   db: Db;
@@ -27,7 +28,7 @@ export class Core {
   }
   public checkPass() {}
   public addCountry(req): Promise<addCountryResp> {
-    return new Promise((res, rej) => {
+    return new Promise(async (res, rej) => {
       let country = req.body || false;
       if (!country || !country.idc) {
         res({
@@ -47,10 +48,11 @@ export class Core {
       country = utils.filter(country, (val) => {
         return val !== "";
       });
+      delete country.imgf;
 
       country.md = true;
       if (country.description === false) delete country.description;
-      if (pass && sha3(pass) == global.movc.PASS) {
+      if (pass && sha3(pass) === global.movc.PASS) {
         this.countries.updateOne(
           { idc: country.idc },
           { $set: country, $unset: { srcdescription: 1 } },
@@ -74,7 +76,7 @@ export class Core {
           res({
             code: "authreq",
           });
-        country.googid = req.session.passport.user.id;
+        country.googid = req.session.passport?.user?.id;
         this.pending.insertOne(country, (err) => {
           if (err) {
             res({

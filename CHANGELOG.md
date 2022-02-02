@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/OOVC/MOVC/compare/v2.5.0...v2.5.1) (2022-02-02)
+
+
+### Bug Fixes
+
+* autoapprove ([53a6220](https://github.com/OOVC/MOVC/commit/53a6220f912f4ecc84b7bf0bec94e5f27ce72f79))
+
 # [2.5.0](https://github.com/OOVC/MOVC/compare/v2.4.1...v2.5.0) (2022-02-02)
 
 

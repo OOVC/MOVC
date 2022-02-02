@@ -51,8 +51,12 @@ export class Core {
       delete country.imgf;
 
       country.md = true;
+      let original = await this.countries.findOne({ idc: country?.idc });
       if (country.description === false) delete country.description;
-      if (pass && sha3(pass) === global.movc.PASS) {
+      if (
+        (pass && sha3(pass) === global.movc.PASS) ||
+        (original && original?.googid == country?.googid)
+      ) {
         this.countries.updateOne(
           { idc: country.idc },
           { $set: country, $unset: { srcdescription: 1 } },

@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/OOVC/MOVC/compare/v2.4.0...v2.4.1) (2022-02-02)
+
+
+### Bug Fixes
+
+* required ([20b3207](https://github.com/OOVC/MOVC/commit/20b32079588614699e81abaedba03dd12d144943))
+
 # [2.4.0](https://github.com/OOVC/MOVC/compare/v2.3.0...v2.4.0) (2022-02-02)
 
 

@@ -6,7 +6,7 @@ interface fxrates {
 
 export function initConfig(): void {
   global.movc = {};
-  global.movc.PORT = process.env.PORT || 81;
+  global.movc.PORT = process.env.PORT || 80;
   global.movc.PASS = process.env.PASS || require("../secure.json").pass;
   global.movc.URL = process.env.URL || require("../secure.json").url;
   global.movc.VKTOKEN = process.env.VKTOKEN || require("../secure.json").vk;

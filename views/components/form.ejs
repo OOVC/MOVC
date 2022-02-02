@@ -1,26 +1,29 @@
-<% for(let i=0; i<options.length; i++) { if(options[i].type==="many" ){ %>
-    <div class="formrow row m-5 <%=options[i].required ? " required" : "" %>">
-        <div class="col-lg-12"><label class="form-label">
-                <%=options[i].title%>
-            </label></div>
-        <div class="col-sm-12">
-            <select id="<%=options[i].id%>" class="movcform form-select" name="<%=options[i].id%>">
-                <% for(let g=0; g<options[i].types.length; g++) { if(!options[i].types[g].startsWith("group:")){ %>
-                    <option>
-                        <%= options[i].types[g] %>
-                    </option>
-                    <% } else{ %>
-                        <optgroup label="<%= options[i].types[g].slice(6) %>">
-                            <% } } %>
-            </select>
-            <% if(options[i].help) %>
-                <div class="form-text">
-                    <%=options[i].help%>
-                </div>
-                <% %>
+<% for(let i=0; i<options.length; i++) { 
+    if(options[i].type==="many" ){ 
+        %>
+        <div class="formrow row m-5 <%=options[i].required ? " required" : "" %>">
+            <div class="col-lg-12"><label class="form-label">
+                    <%=options[i].title%>
+                </label></div>
+            <div class="col-sm-12">
+                <select id="<%=options[i].id%>" class="movcform form-select" name="<%=options[i].id%>">
+                    <% for(let g=0; g<options[i].types.length; g++) { if(!options[i].types[g].startsWith("group:")){ %>
+                        <option>
+                            <%= options[i].types[g] %>
+                        </option>
+                        <% } else{ %>
+                            <optgroup label="<%= options[i].types[g].slice(6) %>">
+                                <% } } %>
+                </select>
+                <% if(options[i].help) %>
+                    <div class="form-text">
+                        <%=options[i].help%>
+                    </div>
+                    <% %>
+            </div>
         </div>
-    </div>
-    <% } else if(options[i].type==="area" ){ %>
+    <% 
+    } else if(options[i].type==="area" ){ %>
         <div class="formrow row m-5 <%=options[i].required ? " required" : "" %>">
             <div class="col-lg-12"><label class="form-label">
                     <%=options[i].title%>
@@ -35,50 +38,60 @@
                     <% %>
             </div>
         </div>
-        <% } else if(options[i].type==="number" ){ %>
-            <div class="formrow row m-5 <%=options[i].required ? " required" : "" %>">
-                <div class="col-lg-12"><label class="form-label">
-                        <%=options[i].title%>
-                    </label></div>
-                <div class="col-sm-12">
-                    <input type="number" step="0.001" id="<%=options[i].id%>" name="<%=options[i].id%>"
-                        class="movcform form-control" <%- options[i].required ? "required" : "" %> >
-                    <% if(options[i].help) %>
-                        <div class="form-text">
-                            <%=options[i].help%>
-                        </div>
-                        <% %>
+    <% 
+    } else if(options[i].type==="number" ){ %>
+        <div class="formrow row m-5 <%=options[i].required ? " required" : "" %>">
+            <div class="col-lg-12"><label class="form-label">
+                    <%=options[i].title%>
+                </label></div>
+            <div class="col-sm-12">
+                <input type="number" step="0.001" id="<%=options[i].id%>" name="<%=options[i].id%>"
+                    class="movcform form-control" <%- options[i].required ? "required" : "" %> >
+                <% if(options[i].help) %>
+                    <div class="form-text">
+                        <%=options[i].help%>
+                    </div>
+                    <% %>
+            </div>
+        </div>
+    <% 
+    } else if(options[i].type==="file" ){ %>
+        <div class="formrow row m-5 <%=options[i].required ? " required" : "" %>">
+            <div class="col-lg-12"><label class="form-label">
+                    <%=options[i].title%>
+                </label></div>
+            <div class="col-sm-12">
+                <input type="file" id="<%=options[i].id%>" name="<%=options[i].id%>"
+                    class="movcform form-control" <%- options[i].required ? "required" : "" %> >
+                <% if(options[i].help) %>
+                    <div class="form-text">
+                        <%=options[i].help%>
+                    </div>
+                    <% %>
+            </div>
+            <div id="upimg" class="col">
+                <div id="spinimg" class="visually-hidden spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
-            <% }else if(options[i].type==="file" ){ %>
-                <div class="formrow row m-5 <%=options[i].required ? " required" : "" %>">
-                    <div class="col-lg-12"><label class="form-label">
-                            <%=options[i].title%>
-                        </label></div>
-                    <div class="col-sm-12">
-                        <input type="file" id="<%=options[i].id%>" name="<%=options[i].id%>"
-                            class="movcform form-control" <%- options[i].required ? "required" : "" %> >
-                        <% if(options[i].help) %>
-                            <div class="form-text">
-                                <%=options[i].help%>
-                            </div>
-                            <% %>
-                    </div>
+        </div>
+    <% 
+    } else { %>
+        <div class="formrow row m-5 <%=options[i].required ? " required" : "" %>">
+            <div class="col-lg-12"><label class="form-label">
+                    <%=options[i].title%>
+                </label></div>
+            <div class="col-sm-12">
+                <input type="<%=options[i].type === " sec" ? "password" : "text" %>" id="<%=options[i].id%>"
+                    name="<%=options[i].id%>" placeholder="<%=options[i].placeholder%>" class="movcform
+                            form-control" <%- options[i].required ? "required" : "" %> >
+            </div>
+            <% if(options[i].help) %>
+                <div class="form-text">
+                    <%=options[i].help%>
                 </div>
-                <% } else { %>
-                    <div class="formrow row m-5 <%=options[i].required ? " required" : "" %>">
-                        <div class="col-lg-12"><label class="form-label">
-                                <%=options[i].title%>
-                            </label></div>
-                        <div class="col-sm-12">
-                            <input type="<%=options[i].type === " sec" ? "password" : "text" %>" id="<%=options[i].id%>"
-                                name="<%=options[i].id%>" placeholder="<%=options[i].placeholder%>" class="movcform
-                                        form-control" <%- options[i].required ? "required" : "" %> >
-                        </div>
-                        <% if(options[i].help) %>
-                            <div class="form-text">
-                                <%=options[i].help%>
-                            </div>
-                            <% %>
-                    </div>
-                    <% } } %>
+                <% %>
+        </div>
+        <% 
+    } 
+} %>

@@ -9,12 +9,7 @@ window.onload = () => {
   let img = document.getElementById("imgf");
   img.oninput = () => {
     let file = img.files[0];
-    console.log(file.name);
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = async () => {
-      document.getElementById("img").value = reader.result.split(",")[1];
-    };
+    uploadImg(file);
   };
   let rank = document.getElementById("rank");
   if (rank)
@@ -25,3 +20,22 @@ window.onload = () => {
       }
     };
 };
+
+async function uploadImg(file) {
+  if (!file || !file.type.match(/image.*/)) return;
+  document.getElementById("spinimg").classList.remove("visually-hidden");
+  var fd = new FormData();
+  fd.append("image", file);
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://api.imageban.ru/v1");
+  xhr.onload = function () {
+    let response = JSON.parse(xhr.response);
+    document.getElementById("spinimg").classList.add("visually-hidden");
+    document.getElementById(
+      "upimg"
+    ).innerHTML = `<img class="w-50" src="${response.data.link}" alt="Photo uploaded">`;
+    document.getElementById("img").value = response.data.link;
+  };
+  xhr.setRequestHeader("Authorization", "TOKEN 624JMPSiAoiJJQeBUHrQ");
+  xhr.send(fd);
+}

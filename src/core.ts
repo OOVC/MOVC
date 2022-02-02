@@ -48,18 +48,7 @@ export class Core {
       country = utils.filter(country, (val) => {
         return val !== "";
       });
-
-      let response = await fetch(
-        `https://api.imgbb.com/1/upload?key=40d94828d1fee3990f32f9b56b3ee98a`,
-        {
-          method: "POST",
-          body: new URLSearchParams(`image=${country.img}`),
-        }
-      );
-      response = await response.json();
-      console.log(response);
       delete country.imgf;
-      country.img = response.data.url;
 
       country.md = true;
       if (country.description === false) delete country.description;
@@ -83,10 +72,10 @@ export class Core {
         );
       } else {
         country.cidc = sha3("" + Math.random() + Date.now());
-        // if (!req.session?.passport?.user?.id)
-        //   res({
-        //     code: "authreq",
-        //   });
+        if (!req.session?.passport?.user?.id)
+          res({
+            code: "authreq",
+          });
         country.googid = req.session.passport?.user?.id;
         this.pending.insertOne(country, (err) => {
           if (err) {

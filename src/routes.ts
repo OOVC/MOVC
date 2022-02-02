@@ -164,7 +164,7 @@ module.exports = async (app, db, skl) => {
     });
   });
   app.get("/req-country", (req, res) => {
-    // if (!req.session?.passport?.user?.id) return res.redirect("/gauth");
+    if (!req.session?.passport?.user?.id) return res.redirect("/gauth");
     res.render("pages/req-country", { query: req.query });
   });
   app.get("/countries/:country", (req, res) => {
@@ -402,7 +402,7 @@ module.exports = async (app, db, skl) => {
   app.post(
     "/addcountry",
     recaptcha.middleware.verify,
-    // movc.checkCaptcha,
+    movc.checkCaptcha,
     async (req, res) => {
       let resp = await movc.addCountry(req);
       if (resp.code === "badrequest") {

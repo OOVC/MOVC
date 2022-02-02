@@ -37,10 +37,10 @@ export function filter(obj, filtercheck): any {
   return result;
 }
 
-export function convertFHT(val): boolean {
+export function convertFHT(val): boolean | string {
   if (val === "half") {
   } else if (val === "false") val = false;
-  else if ((val = "true")) val = true;
+  else if (val === "true") val = true;
   else val = "pending";
   return val;
 }

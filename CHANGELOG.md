@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/OOVC/MOVC/compare/v2.3.0...v2.4.0) (2022-02-02)
+
+
+### Features
+
+* auto approve ([93674d2](https://github.com/OOVC/MOVC/commit/93674d2a29a9e8947a71b437bdf613432f914371))
+
 # [2.3.0](https://github.com/OOVC/MOVC/compare/v2.2.5...v2.3.0) (2022-02-02)
 
 

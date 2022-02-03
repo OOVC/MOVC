@@ -1,3 +1,10 @@
+## [2.5.2](https://github.com/OOVC/MOVC/compare/v2.5.1...v2.5.2) (2022-02-02)
+
+
+### Bug Fixes
+
+* fht ([68f41bc](https://github.com/OOVC/MOVC/commit/68f41bc74a846691f484c89d2133c8555f176481))
+
 ## [2.5.1](https://github.com/OOVC/MOVC/compare/v2.5.0...v2.5.1) (2022-02-02)
 
 

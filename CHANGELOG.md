@@ -1,3 +1,10 @@
+## [2.5.3](https://github.com/OOVC/MOVC/compare/v2.5.2...v2.5.3) (2022-02-03)
+
+
+### Bug Fixes
+
+* marks ([d3927b3](https://github.com/OOVC/MOVC/commit/d3927b3c5fd0766eaa060138c4da761720e3359b))
+
 ## [2.5.2](https://github.com/OOVC/MOVC/compare/v2.5.1...v2.5.2) (2022-02-02)
 
 

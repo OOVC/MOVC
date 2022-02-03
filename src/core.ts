@@ -58,6 +58,10 @@ export class Core {
         (pass && sha3(pass) === global.movc.PASS) ||
         original?.googid === country?.googid
       ) {
+        if (original?.googid === country?.googid) {
+          country.verified = original.verified;
+          country.irl = original.irl;
+        }
         this.countries.updateOne(
           { idc: country.idc },
           { $set: country, $unset: { srcdescription: 1 } },

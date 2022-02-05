@@ -1,7 +1,7 @@
 <% for(let i=0; i<options.length; i++) { 
     if(options[i].type==="many" ){ 
         %>
-        <div class="formrow row m-5 <%=options[i].required ? " required" : "" %>">
+        <div class="formrow row m-5 <%=options[i].required ? "required" : "" %>">
             <div class="col-lg-12"><label class="form-label">
                     <%=options[i].title%>
                 </label></div>
@@ -24,7 +24,7 @@
         </div>
     <% 
     } else if(options[i].type==="area" ){ %>
-        <div class="formrow row m-5 <%=options[i].required ? " required" : "" %>">
+        <div class="formrow row m-5 <%=options[i].required ? "required" : "" %>">
             <div class="col-lg-12"><label class="form-label">
                     <%=options[i].title%>
                 </label></div>
@@ -40,7 +40,7 @@
         </div>
     <% 
     } else if(options[i].type==="number" ){ %>
-        <div class="formrow row m-5 <%=options[i].required ? " required" : "" %>">
+        <div class="formrow row m-5 <%=options[i].required ? "required" : "" %>">
             <div class="col-lg-12"><label class="form-label">
                     <%=options[i].title%>
                 </label></div>
@@ -77,12 +77,12 @@
         </div>
     <% 
     } else { %>
-        <div class="formrow row m-5 <%=options[i].required ? " required" : "" %>">
+        <div class="formrow row m-5 <%=options[i].required ? "required" : "" %>">
             <div class="col-lg-12"><label class="form-label">
                     <%=options[i].title%>
                 </label></div>
             <div class="col-sm-12">
-                <input type="<%=options[i].type === " sec" ? "password" : "text" %>" id="<%=options[i].id%>"
+                <input type="<%=options[i].type === "sec" ? "password" : "text" %>" id="<%=options[i].id%>"
                     name="<%=options[i].id%>" placeholder="<%=options[i].placeholder%>" class="movcform
                             form-control" <%- options[i].required ? "required" : "" %> >
             </div>

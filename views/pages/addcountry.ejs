@@ -4,102 +4,102 @@ let options = [
     {
         title:"Пароль админа*",
         id:"pass",
-        type:"sec"
+        type:"sec",
+        required:true
     },
     {
         title:"id страны*",
-        help:"Можно использовать английские буквы и тире(-), напр: banana-republic",
-        id:"idc"
-    },
-    {
-        title:"Рейтинг страны",
-        id:"rank",
-        help:"цифра"
+        help:"Можно использовать английские буквы и тире(-)",
+        id:"idc",
+        required:true,
+        placeholder:"banana-republic"
     },
     {
         title:"Имя страны*",
         id:"name",
-        help:"Например Банановая республика"
+        help:"Название вашей страны",
+        placeholder:"Банановая республика",
+        required:true
     },
     {
-        title:"Ссылка на фото флага страны*",
-        id:"img",
-        help:"Желательно фото с сайта imgur"
+        title:"Флаг страны*",
+        id:"imgf",
+        type:"file"
     },
     {
         title:"Тип правления*",
         id:"type",
-        help:"Например монархия"
+        required:true,
+        type:"many",
+        types:[
+            "group:Монархия",
+            "Абсолютная монархия",
+            "Ограниченная монархия",
+            "Сословно-представительная монархия",
+            "Конституционная монархия",
+            "Дуалистическая монархия",
+            "Парламентская монархия",
+            "Президентская монархия",
+            "group:Республика",
+            "Президентская республика",
+            "Парламентская республика",
+            "Смешанная республика",
+            "Смешанная Республика с уклоном в Парламентскую Республику",
+            "Монархия с республиканскими элементами",
+            "Республика с монархическими элементами",
+            "Теократическая республика",
+            "group:Остальное",
+            "Диктатура",
+            "Комунна",
+            "Анархия"
+        ]
     },
     {
         title:"Описание*",
         id:"description",
-        help:`
-        <script>
-            function insert(text) {
-                let txtarea = document.getElementById("description");
-                let start = txtarea.selectionStart;
-                let end = txtarea.selectionEnd;
-                let finText = txtarea.value.substring(0, start) + text + txtarea.value.substring(end);
-                txtarea.value = finText;
-                txtarea.focus();
-                txtarea.selectionEnd = ( start == end )? (end + text.length) : end ;
-            }
-            function bold(){
-                insert("bold()")
-            }
-            function url(){
-                insert("url()")
-            }
-            function texturl(){
-                insert("trl(,)")
-            }
-            function imgs(){
-                insert("img()")
-            }
-            function custom(){
-                insert("custom(,);un;")
-            }
-            function audio(){
-                insert("audio()")
-            }
-        </script>
-        <div class="row text-center">
-            <div class="col"><input type="button" onclick=bold() value="Жирный шрифт" class="btn btn-outline-dark btn-sm"></div>
-            <div class="col"><input type="button" onclick=url() value="Ссылка" class="btn btn-outline-dark btn-sm"></div>
-            <div class="col"><input type="button" onclick=texturl() value="Текстовая ссылка" class="btn btn-outline-dark btn-sm"></div>
-            <div class="col"><input type="button" onclick=imgs() value="Изображение" class="btn btn-outline-dark btn-sm"></div>
-            <div class="col"><input type="button" onclick=audio() value="Аудио" class="btn btn-outline-dark btn-sm"></div>
-            <div class="col"><input type="button" onclick=custom() value="Доп. информация" class="btn btn-outline-dark btn-sm"></div>
-        </div>
-        Например Здесь все едят бананы
-        `,
-        type:"area"
+        type:"area",
+        required:true
     },
     {
         title:"Правитель*",
         id:"owner",
-        id:"Например Бананов Бананоед"
+        help:"Имя правителя страны",
+        placeholder:"Бананов Бананоед",
+        required:true
     },
     {
         title:"Контакт правителя*",
         id:"contact",
-        help:"Например https://vk.com/example"
+        help:"Только ссылка",
+        placeholder:"https://vk.com/example",
+        required:true
     },
     {
         title:"Дата основания*",
         id:"date",
-        help:"Например 22.02.2021"
+        placeholder:"22.02.2021",
+        required:true
     },
     {
         title:"Сайт",
         id:"site",
-        help:"Ссылка"
+        help:"Ссылка на сайт государства",
+        placeholder:"https://example.com"
     },
     {
-        title:"Страница в вк",
+        title:"Группа в вк",
         id:"vk",
-        help:"Ссылка"
+        help:"Ссылка на группу вк государства",
+        placeholder:"https://vk.com/example"
+    },
+    {
+        title:"Хочу вступить в ООВГ.",
+        id:"oovg",
+        type:"many",
+        types:[
+            "Да",
+            "Нет"
+        ]
     },
     {
         title:"Соответствие стандарту ERTH2",
@@ -127,13 +127,24 @@ let options = [
 %> 
 <html>
     <head>
-        <%- include("../components/bootstrap") %> 
-        <%- include("../components/head") %> 
+        <%- include("../components/bootstrap") %>
+        <%- include("../components/head") %>
         <title>Добавить государство</title>
+        <script src="/public/js/prevent.js"></script>
+        <script src="/public/js/autobind.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+        <script>
+            window.addEventListener("load", () => {
+                window.mde = new EasyMDE({
+                    element: document.getElementById("description"),
+                    forceSync: true,
+                    spellChecker: false
+                });
+            });
+        </script>
     </head>
     <body>
-        <script src="/public/js/prevent.js"></script>
-        <script src="/public/js/autobind.js"></script> 
         <%- include("../components/menu") %>
         <div class="container">
             <form action="/addcountry" method="post">

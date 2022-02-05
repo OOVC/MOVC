@@ -1,3 +1,10 @@
+## [2.5.5](https://github.com/OOVC/MOVC/compare/v2.5.4...v2.5.5) (2022-02-05)
+
+
+### Bug Fixes
+
+* password + addcountry admin ([06f3bcf](https://github.com/OOVC/MOVC/commit/06f3bcf760f65015ab45e4c7048746eb31614d93))
+
 ## [2.5.4](https://github.com/OOVC/MOVC/compare/v2.5.3...v2.5.4) (2022-02-05)
 
 

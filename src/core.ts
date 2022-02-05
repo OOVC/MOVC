@@ -31,7 +31,7 @@ export class Core {
     return new Promise(async (res, rej) => {
       let country = req.body || false;
       if (!country || !country.idc) {
-        res({
+        return res({
           code: "badrequest",
         });
       }

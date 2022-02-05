@@ -1,3 +1,10 @@
+## [2.5.4](https://github.com/OOVC/MOVC/compare/v2.5.3...v2.5.4) (2022-02-05)
+
+
+### Bug Fixes
+
+* pass + return ([4736733](https://github.com/OOVC/MOVC/commit/47367334c0ed57187d7c56210ace8a5787ef4209))
+
 ## [2.5.3](https://github.com/OOVC/MOVC/compare/v2.5.2...v2.5.3) (2022-02-03)
 
 

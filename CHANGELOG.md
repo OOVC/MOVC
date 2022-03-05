@@ -1,3 +1,10 @@
+## [2.5.6](https://github.com/OOVC/MOVC/compare/v2.5.5...v2.5.6) (2022-03-05)
+
+
+### Bug Fixes
+
+* map sand water ([abb29b1](https://github.com/OOVC/MOVC/commit/abb29b11ad29ddcd918a8a59af81b29e62da73b4))
+
 ## [2.5.5](https://github.com/OOVC/MOVC/compare/v2.5.4...v2.5.5) (2022-02-05)
 
 

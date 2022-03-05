@@ -204,7 +204,8 @@ window.onload = async () => {
     if (
       geo[i].properties.type === "city" ||
       geo[i].properties.type === "capital-city" ||
-      geo[i].properties.type === "landmark"
+      geo[i].properties.type === "landmark" ||
+      !geo[i].properties.type
     ) {
       logmarker(
         "Получаю маркер:",
@@ -234,11 +235,17 @@ window.onload = async () => {
     if (geo[i].geometry.type === "Polygon") {
       country = countries[geo[i].properties.name];
       if (!country || !geo[i].properties.name) {
-        console.error(
-          "Ошибка в получении: " +
-            (geo[i].properties.name || geo[i].properties.Name)
-        );
-        continue;
+        if (
+          ["sand", "grass", "water", "occupation"].indexOf(
+            geo[i].properties.type
+          ) === -1
+        ) {
+          console.error(
+            "Ошибка в получении: " +
+              (geo[i].properties.name || geo[i].properties.Name)
+          );
+          continue;
+        }
       }
     }
     if (geo[i].properties.type === "sand") {

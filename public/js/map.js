@@ -233,7 +233,7 @@ window.onload = async () => {
     let country;
     if (geo[i].geometry.type === "Polygon") {
       country = countries[geo[i].properties.name];
-      if (!country || (!geo[i].properties.name && !geo[i].properties.type)) {
+      if (!country || !geo[i].properties.name) {
         console.error(
           "Ошибка в получении: " +
             (geo[i].properties.name || geo[i].properties.Name)

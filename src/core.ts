@@ -52,7 +52,6 @@ export class Core {
 
       country.md = true;
       country.googid = req.session.passport?.user?.id;
-      console.log(req.session.passport);
       let original = await this.countries.findOne({ idc: country?.idc });
       if (country.description === false) delete country.description;
       if (

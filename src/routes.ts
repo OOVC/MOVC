@@ -134,6 +134,10 @@ module.exports = async (app, db, skl) => {
   });
   app.get("/currencies/:valute", async (req, res) => {
     valutes.findOne({ idc: req.params.valute }, async (err, valute) => {
+      if (!valute) {
+        res.status(404);
+        res.render("pages/notfound");
+      }
       if (valute.course) {
         if (cachedvalutes[req.params.valute]) {
           if (valute.idc === "SKL") {

@@ -1,3 +1,10 @@
+## [2.5.8](https://github.com/OOVC/MOVC/compare/v2.5.7...v2.5.8) (2022-03-09)
+
+
+### Bug Fixes
+
+* valute crash ([bd30426](https://github.com/OOVC/MOVC/commit/bd304265fba8a444885867ff469a9fa8ae1d6537))
+
 ## [2.5.7](https://github.com/OOVC/MOVC/compare/v2.5.6...v2.5.7) (2022-03-05)
 
 

@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/OOVC/MOVC/compare/v2.5.8...v2.6.0) (2022-03-20)
+
+
+### Features
+
+* delete pending countries ([ee7b7e7](https://github.com/OOVC/MOVC/commit/ee7b7e79b2b85ecd58024f9ff990f3c55d3447f8))
+
 ## [2.5.8](https://github.com/OOVC/MOVC/compare/v2.5.7...v2.5.8) (2022-03-09)
 
 

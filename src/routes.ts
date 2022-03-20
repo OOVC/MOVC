@@ -261,19 +261,19 @@ module.exports = async (app, db, skl) => {
     });
     res.end(JSON.stringify(geo));
   });
-  app.get("/pending-countries", (req, res) => {
-    pending
-      .find({}, { name: 1, cidc: 1, description: 1 })
-      .toArray((err, results) => {
-        pending.countDocuments((_, v) => {
-          res.render("pages/pending-countries", {
-            val: results,
-            count: v,
-            removeMd,
-          });
-        });
-      });
-  });
+  // app.get("/pending-countries", (req, res) => {
+  //   pending
+  //     .find({}, { name: 1, cidc: 1, description: 1 })
+  //     .toArray((err, results) => {
+  //       pending.countDocuments((_, v) => {
+  //         res.render("pages/pending-countries", {
+  //           val: results,
+  //           count: v,
+  //           removeMd,
+  //         });
+  //       });
+  //     });
+  // });
 
   app.get("/map", (req, res) => {
     res.render("pages/map");

@@ -5,15 +5,21 @@ use mongodb::{
 };
 
 pub struct Core {
-  db: Database,
+  currencies: Collection<Document>,
   countries: Collection<Document>,
+  pending_countries: Collection<Document>,
+  deleted_countries: Collection<Document>,
+  geo: Collection<Document>,
 }
 
 impl Core {
   pub fn new(db: &Database) -> Core {
     Core {
-      db: db.clone(),
       countries: db.collection("countries"),
+      currencies: db.collection("currencies"),
+      pending_countries: db.collection("pending-countries"),
+      deleted_countries: db.collection("deleted-countries"),
+      geo: db.collection("geo"),
     }
   }
   pub fn get_country(&self, name: &String) -> Result<Option<Document>, Error> {

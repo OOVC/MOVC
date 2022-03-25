@@ -15,7 +15,7 @@ pub async fn country(
   }
 }
 
-#[get("/countries")]
+#[get("/api/countries")]
 pub async fn countries(app_data: web::Data<crate::AppState>) -> impl Responder {
   let result = app_data.core.get_countries();
   HttpResponse::Ok().json(result)

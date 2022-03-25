@@ -19,10 +19,12 @@ impl Core {
   pub fn get_country(&self, name: &String) -> Result<Option<Document>, Error> {
     self.countries.find_one(bson::doc! { "idc": name }, None)
   }
-  // pub fn get_countries(&self) {
-  //   let cursor = self.countries.find(None, None);
-  //   for doc in cursor {
-  //     println!("{}", doc?)
-  //   }
-  // }
+  pub fn get_countries(&self) -> Vec<Document> {
+    let cursor = self.countries.find(None, None).unwrap();
+    let mut total: Vec<Document> = Vec::new();
+    for doc in cursor {
+      total.push(doc.unwrap());
+    }
+    total
+  }
 }

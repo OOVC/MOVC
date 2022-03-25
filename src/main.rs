@@ -31,6 +31,7 @@ async fn main() -> std::io::Result<()> {
                 core: movc_core::Core::new(&db),
             })
             .service(controller::country)
+            .service(controller::countries)
     })
     .bind(("0.0.0.0", port))
     .expect("Can not bind to port 8000")

@@ -18,10 +18,9 @@ async fn main() -> std::io::Result<()> {
         .parse()
         .expect("PORT must be a number");
 
-    let client_options = mongodb::options::ClientOptions::parse(
-        env::var("MONGODB_URI").expect("SHould have mongodb uri"),
-    )
-    .unwrap();
+    let client_options =
+        mongodb::options::ClientOptions::parse(env::var("MONGODB_URI").expect("Mongodb uri"))
+            .unwrap();
     let client = mongodb::sync::Client::with_options(client_options).unwrap();
     let db = client.database("movc");
 

@@ -1,11 +1,8 @@
 use bson::Document;
-use futures::stream::{self, StreamExt};
 use mongodb::{
   error::Error,
-  results::InsertOneResult,
-  sync::{Client, Collection, Cursor, Database},
+  sync::{Collection, Database},
 };
-use serde::{Deserialize, Serialize};
 
 pub struct Core {
   db: Database,
@@ -24,5 +21,8 @@ impl Core {
   }
   // pub fn get_countries(&self) {
   //   let cursor = self.countries.find(None, None);
+  //   for doc in cursor {
+  //     println!("{}", doc?)
+  //   }
   // }
 }

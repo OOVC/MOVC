@@ -1,0 +1,16 @@
+[package]
+name = "movc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix = "0.11.0"
+actix-web = "3.3.2"
+actix-rt = "1.1.1"
+actix-cors = "0.5.4" 
+
+mongodb = { version = "2.1.0", default-features = false, features = ["sync"] }
+bson = "2.1.0"
+serde = "1.0.136"
+futures = "0.3.19"
+dotenv = "0.15.0"

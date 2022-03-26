@@ -8,8 +8,6 @@ pub struct Core {
   currencies: Collection<Document>,
   countries: Collection<Document>,
   pending_countries: Collection<Document>,
-  deleted_countries: Collection<Document>,
-  geo: Collection<Document>,
 }
 
 impl Core {
@@ -18,12 +16,14 @@ impl Core {
       countries: db.collection("countries"),
       currencies: db.collection("currencies"),
       pending_countries: db.collection("pending-countries"),
-      deleted_countries: db.collection("deleted-countries"),
-      geo: db.collection("geo"),
     }
   }
   pub fn get_country(&self, name: &String) -> Result<Option<Document>, Error> {
     self.countries.find_one(bson::doc! { "idc": name }, None)
+  }
+
+  pub fn get_currency(&self, name: &String) -> Result<Option<Document>, Error> {
+    self.currencies.find_one(bson::doc! { "idc": name }, None)
   }
 
   pub fn get_countries(&self) -> Result<Vec<Document>, Error> {

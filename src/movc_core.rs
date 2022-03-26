@@ -43,7 +43,9 @@ impl Core {
     let to_resolve: Vec<Result<Document, Error>> = cursor.collect();
     let mut total: Vec<Document> = Vec::new();
     for doc in to_resolve {
-      if let Ok(doc) = doc {
+      if let Ok(mut doc) = doc {
+        doc.remove("_id");
+        doc.remove("googid");
         total.push(doc);
       } else if let Err(e) = doc {
         return Err(e);

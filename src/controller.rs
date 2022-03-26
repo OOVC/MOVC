@@ -11,6 +11,15 @@ pub async fn country(
   resolve_doc_result(result)
 }
 
+#[get("/api/pending-country/{cidc}")]
+pub async fn pending_country(
+  app_data: web::Data<crate::AppState>,
+  cidc: web::Path<String>,
+) -> impl Responder {
+  let result = web::block(move || app_data.core.get_pending_country(&cidc)).await;
+  resolve_doc_result(result)
+}
+
 #[get("/api/currency/{name}")]
 pub async fn currency(
   app_data: web::Data<crate::AppState>,

@@ -34,6 +34,7 @@ async fn main() -> std::io::Result<()> {
             })
             .service(controller::country)
             .service(controller::countries)
+            .service(controller::pending_country)
             .service(controller::pending_countries)
             .service(controller::currencies)
             .service(controller::currency)

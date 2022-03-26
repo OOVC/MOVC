@@ -22,6 +22,12 @@ impl Core {
     self.countries.find_one(bson::doc! { "idc": name }, None)
   }
 
+  pub fn get_pending_country(&self, cidc: &String) -> Result<Option<Document>, Error> {
+    self
+      .pending_countries
+      .find_one(bson::doc! { "cidc": cidc }, None)
+  }
+
   pub fn get_currency(&self, name: &String) -> Result<Option<Document>, Error> {
     self.currencies.find_one(bson::doc! { "idc": name }, None)
   }

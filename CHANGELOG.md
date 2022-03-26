@@ -1,3 +1,15 @@
+# [3.0.0-beta.1](https://github.com/OOVC/MOVC/compare/v2.6.0...v3.0.0-beta.1) (2022-03-26)
+
+
+### Features
+
+* rust rewrite ([df4aa25](https://github.com/OOVC/MOVC/commit/df4aa25b71a41e841e488d54c90f9a97ef967c92))
+
+
+### BREAKING CHANGES
+
+* rewrite to rust
+
 # 1.0.0-beta.1 (2022-03-26)
 
 

@@ -53,7 +53,7 @@ fn resolve_collection_result(
   match result {
     Ok(result) => HttpResponse::Ok().json(result),
     Err(e) => {
-      println!("Error while getting, {:?}", e);
+      println!("Resolve collection error: {:?}", e);
       HttpResponse::InternalServerError().finish()
     }
   }
@@ -66,7 +66,7 @@ fn resolve_doc_result(result: Result<Option<Document>, BlockingError<Error>>) ->
       None => HttpResponse::NotFound().json(bson::doc! {"msg":"Not Found"}),
     },
     Err(e) => {
-      println!("Error while getting, {:?}", e);
+      println!("Resolve doc error: {:?}", e);
       HttpResponse::InternalServerError().finish()
     }
   }

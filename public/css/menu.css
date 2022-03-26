@@ -1,9 +1,0 @@
-.logo{
-  transition: .5s;
-}
-
-.logo:hover{
-  transition: .7s;
-  letter-spacing: 0.2px;
-  transform: skewX(-15deg);
-}

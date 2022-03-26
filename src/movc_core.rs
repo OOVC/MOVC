@@ -44,6 +44,7 @@ impl Core {
     self.get_full_collection(&self.pending_countries)
   }
 
+  //Retrieves the entire collection and returns result
   fn get_full_collection(&self, collection: &Collection<Document>) -> Result<Vec<Document>, Error> {
     let cursor = collection.find(None, None).unwrap();
     let to_resolve: Vec<Result<Document, Error>> = cursor.collect();

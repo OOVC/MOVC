@@ -1,4 +1,6 @@
-use actix_web::{get, web, HttpResponse, Responder};
+use actix_web::{error::BlockingError, get, web, HttpResponse, Responder};
+use bson::Document;
+use mongodb::error::Error;
 
 #[get("/api/country/{name}")]
 pub async fn country(
@@ -18,6 +20,12 @@ pub async fn country(
 #[get("/api/countries")]
 pub async fn countries(app_data: web::Data<crate::AppState>) -> impl Responder {
   let result = web::block(move || app_data.core.get_countries()).await;
+  resolve_collection_result(result)
+}
+
+fn resolve_collection_result(
+  result: Result<Vec<Document>, BlockingError<Error>>,
+) -> impl Responder {
   match result {
     Ok(result) => HttpResponse::Ok().json(result),
     Err(e) => {

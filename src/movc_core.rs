@@ -25,8 +25,21 @@ impl Core {
   pub fn get_country(&self, name: &String) -> Result<Option<Document>, Error> {
     self.countries.find_one(bson::doc! { "idc": name }, None)
   }
+
   pub fn get_countries(&self) -> Result<Vec<Document>, Error> {
-    let cursor = self.countries.find(None, None).unwrap();
+    self.get_full_collection(&self.countries)
+  }
+
+  pub fn get_currencies(&self) -> Result<Vec<Document>, Error> {
+    self.get_full_collection(&self.currencies)
+  }
+
+  pub fn get_pending_countries(&self) -> Result<Vec<Document>, Error> {
+    self.get_full_collection(&self.pending_countries)
+  }
+
+  fn get_full_collection(&self, collection: &Collection<Document>) -> Result<Vec<Document>, Error> {
+    let cursor = collection.find(None, None).unwrap();
     let to_resolve: Vec<Result<Document, Error>> = cursor.collect();
     let mut total: Vec<Document> = Vec::new();
     for doc in to_resolve {

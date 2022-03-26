@@ -31,6 +31,8 @@ async fn main() -> std::io::Result<()> {
             })
             .service(controller::country)
             .service(controller::countries)
+            .service(controller::pending_countries)
+            .service(controller::currencies)
     })
     .bind(("0.0.0.0", port))
     .expect("Can not bind to port 8000")

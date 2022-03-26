@@ -23,6 +23,18 @@ pub async fn countries(app_data: web::Data<crate::AppState>) -> impl Responder {
   resolve_collection_result(result)
 }
 
+#[get("/api/pending-countries")]
+pub async fn pending_countries(app_data: web::Data<crate::AppState>) -> impl Responder {
+  let result = web::block(move || app_data.core.get_pending_countries()).await;
+  resolve_collection_result(result)
+}
+
+#[get("/api/currencies")]
+pub async fn currencies(app_data: web::Data<crate::AppState>) -> impl Responder {
+  let result = web::block(move || app_data.core.get_currencies()).await;
+  resolve_collection_result(result)
+}
+
 fn resolve_collection_result(
   result: Result<Vec<Document>, BlockingError<Error>>,
 ) -> impl Responder {

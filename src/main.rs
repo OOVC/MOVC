@@ -1,3 +1,4 @@
+use actix_cors::Cors;
 use actix_web::{App, HttpServer};
 use dotenv::dotenv;
 use std::env;
@@ -25,7 +26,9 @@ async fn main() -> std::io::Result<()> {
     let db = client.database("movc");
 
     HttpServer::new(move || {
+        let cors = Cors::default().allow_any_origin();
         App::new()
+            .wrap(cors)
             .data(AppState {
                 core: movc_core::Core::new(&db),
             })
@@ -33,6 +36,7 @@ async fn main() -> std::io::Result<()> {
             .service(controller::countries)
             .service(controller::pending_countries)
             .service(controller::currencies)
+            .service(controller::currency)
     })
     .bind(("0.0.0.0", port))
     .expect("Can not bind to port 8000")

@@ -8,13 +8,16 @@ pub async fn country(
   name: web::Path<String>,
 ) -> impl Responder {
   let result = web::block(move || app_data.core.get_country(&name)).await;
-  match result {
-    Ok(result) => HttpResponse::Ok().json(result),
-    Err(e) => {
-      println!("Error while getting, {:?}", e);
-      HttpResponse::InternalServerError().finish()
-    }
-  }
+  resolve_doc_result(result)
+}
+
+#[get("/api/currency/{name}")]
+pub async fn currency(
+  app_data: web::Data<crate::AppState>,
+  name: web::Path<String>,
+) -> impl Responder {
+  let result = web::block(move || app_data.core.get_currency(&name)).await;
+  resolve_doc_result(result)
 }
 
 #[get("/api/countries")]
@@ -40,6 +43,19 @@ fn resolve_collection_result(
 ) -> impl Responder {
   match result {
     Ok(result) => HttpResponse::Ok().json(result),
+    Err(e) => {
+      println!("Error while getting, {:?}", e);
+      HttpResponse::InternalServerError().finish()
+    }
+  }
+}
+
+fn resolve_doc_result(result: Result<Option<Document>, BlockingError<Error>>) -> impl Responder {
+  match result {
+    Ok(result) => match result {
+      Some(result) => HttpResponse::Ok().json(result),
+      None => HttpResponse::NotFound().json(bson::doc! {"msg":"Not Found"}),
+    },
     Err(e) => {
       println!("Error while getting, {:?}", e);
       HttpResponse::InternalServerError().finish()

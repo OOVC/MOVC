@@ -1,3 +1,10 @@
+# [3.0.0-beta.2](https://github.com/OOVC/MOVC/compare/v3.0.0-beta.1...v3.0.0-beta.2) (2022-03-27)
+
+
+### Features
+
+* delete api route ([46acfd8](https://github.com/OOVC/MOVC/commit/46acfd85035dfe30b0d23bc1926e45fb1437bf7e))
+
 # [3.0.0-beta.1](https://github.com/OOVC/MOVC/compare/v2.6.0...v3.0.0-beta.1) (2022-03-26)
 
 ### Bug Fixes

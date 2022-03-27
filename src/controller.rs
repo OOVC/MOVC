@@ -2,7 +2,7 @@ use actix_web::{error::BlockingError, get, web, HttpResponse, Responder};
 use bson::Document;
 use mongodb::error::Error;
 
-#[get("/api/country/{name}")]
+#[get("/country/{name}")]
 pub async fn country(
   app_data: web::Data<crate::AppState>,
   name: web::Path<String>,
@@ -11,7 +11,7 @@ pub async fn country(
   resolve_doc_result(result)
 }
 
-#[get("/api/pending-country/{cidc}")]
+#[get("/pending-country/{cidc}")]
 pub async fn pending_country(
   app_data: web::Data<crate::AppState>,
   cidc: web::Path<String>,
@@ -20,7 +20,7 @@ pub async fn pending_country(
   resolve_doc_result(result)
 }
 
-#[get("/api/currency/{name}")]
+#[get("/currency/{name}")]
 pub async fn currency(
   app_data: web::Data<crate::AppState>,
   name: web::Path<String>,
@@ -29,19 +29,19 @@ pub async fn currency(
   resolve_doc_result(result)
 }
 
-#[get("/api/countries")]
+#[get("/countries")]
 pub async fn countries(app_data: web::Data<crate::AppState>) -> impl Responder {
   let result = web::block(move || app_data.core.get_countries()).await;
   resolve_collection_result(result)
 }
 
-#[get("/api/pending-countries")]
+#[get("/pending-countries")]
 pub async fn pending_countries(app_data: web::Data<crate::AppState>) -> impl Responder {
   let result = web::block(move || app_data.core.get_pending_countries()).await;
   resolve_collection_result(result)
 }
 
-#[get("/api/currencies")]
+#[get("/currencies")]
 pub async fn currencies(app_data: web::Data<crate::AppState>) -> impl Responder {
   let result = web::block(move || app_data.core.get_currencies()).await;
   resolve_collection_result(result)

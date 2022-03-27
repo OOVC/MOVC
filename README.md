@@ -1,1 +1,1 @@
-Running on: [rust.movc.xyz](https://api.movc.xyz)
+Running on: [api.movc.xyz](https://api.movc.xyz)

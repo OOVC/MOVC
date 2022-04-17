@@ -1,3 +1,10 @@
+## [2.6.1](https://github.com/OOVC/MOVC/compare/v2.6.0...v2.6.1) (2022-04-17)
+
+
+### Bug Fixes
+
+* all ([060a6bd](https://github.com/OOVC/MOVC/commit/060a6bd71e58c56f933463724094fe1387e0a174))
+
 # [2.6.0](https://github.com/OOVC/MOVC/compare/v2.5.8...v2.6.0) (2022-03-20)
 
 

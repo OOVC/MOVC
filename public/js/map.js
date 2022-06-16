@@ -53,7 +53,7 @@ window.onload = async () => {
       "px";
     map.style.width = document.documentElement.scrollWidth + "px";
   });
-  let movc = L.map("map").setView([53.19, 41.28], 6);
+  let movc = L.map("map", { preferCanvas: true }).setView([53.19, 41.28], 6);
   movc.on("dblclick", onMapClick);
   L.tileLayer(
     "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",

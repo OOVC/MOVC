@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/OOVC/MOVC/compare/v2.6.1...v2.7.0) (2022-06-16)
+
+
+### Features
+
+* noindex and remove ads ([f6ae088](https://github.com/OOVC/MOVC/commit/f6ae0885bf37a358aa0e514be69a5288300df0b7))
+
 ## [2.6.1](https://github.com/OOVC/MOVC/compare/v2.6.0...v2.6.1) (2022-04-17)
 
 

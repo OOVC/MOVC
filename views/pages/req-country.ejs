@@ -125,9 +125,6 @@ let options = [
         <script src="/public/js/prevent.js"></script>
         <%- include("../components/menu") %>
         <div class="container">
-            <div class="row text-center">
-                <%- include("../components/cuads") %>
-            </div>
             <form action="/addcountry" method="post">
                 <%- include("../components/form", {options}) %>
                 <input type="hidden" id="img" name="img" required>

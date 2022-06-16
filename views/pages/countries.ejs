@@ -62,13 +62,6 @@
                 }
                 else{
                     for(let i = 0; i<pagecountries.length; i++){
-                        if(i%2===0&&i!==0){
-                            %>
-                            <div class="row text-center">
-                                <%- include("../components/coads") %>
-                            </div>
-                            <%
-                        }
                         %>
                             <%- include("../components/country-card", {country:pagecountries[i]}) %>
                         <%

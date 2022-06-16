@@ -23,13 +23,6 @@
             </div>
             <%
                 for(let i = 0; i<val.length; i++){
-                    if(i%3==0){
-                        %>
-                        <div class="row" style="padding: 5px;">
-                            <%- include("../components/coads") %>
-                        </div>
-                        <%
-                    }
                     %>
                         <%- include("../components/pending-country-card", {country:val[i]}) %>
                     <%

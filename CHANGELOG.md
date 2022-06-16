@@ -1,3 +1,10 @@
+## [2.7.1](https://github.com/OOVC/MOVC/compare/v2.7.0...v2.7.1) (2022-06-16)
+
+
+### Bug Fixes
+
+* routes ([9b599d4](https://github.com/OOVC/MOVC/commit/9b599d48e6781ddc689688e2055f23752fadbc39))
+
 # [2.7.0](https://github.com/OOVC/MOVC/compare/v2.6.1...v2.7.0) (2022-06-16)
 
 

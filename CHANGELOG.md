@@ -1,3 +1,10 @@
+## [2.7.3](https://github.com/OOVC/MOVC/compare/v2.7.2...v2.7.3) (2022-06-16)
+
+
+### Bug Fixes
+
+* lang ([71da320](https://github.com/OOVC/MOVC/commit/71da32062121c18a45e13217feba82813481b711))
+
 ## [2.7.2](https://github.com/OOVC/MOVC/compare/v2.7.1...v2.7.2) (2022-06-16)
 
 

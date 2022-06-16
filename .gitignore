@@ -1,2 +1,4 @@
 /target
 .env
+/dist
+/node_modules

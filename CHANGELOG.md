@@ -1,3 +1,10 @@
+## [2.7.2](https://github.com/OOVC/MOVC/compare/v2.7.1...v2.7.2) (2022-06-16)
+
+
+### Bug Fixes
+
+* map render ([6f1be22](https://github.com/OOVC/MOVC/commit/6f1be22a81763c6adaafccc237207d101a029bcc))
+
 ## [2.7.1](https://github.com/OOVC/MOVC/compare/v2.7.0...v2.7.1) (2022-06-16)
 
 

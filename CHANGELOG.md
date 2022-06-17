@@ -1,3 +1,10 @@
+## [2.7.4](https://github.com/OOVC/MOVC/compare/v2.7.3...v2.7.4) (2022-06-17)
+
+
+### Bug Fixes
+
+* robots.txt ([f16257a](https://github.com/OOVC/MOVC/commit/f16257a9d5473aa089ae66acd2e85ecc7fb8c444))
+
 ## [2.7.3](https://github.com/OOVC/MOVC/compare/v2.7.2...v2.7.3) (2022-06-16)
 
 

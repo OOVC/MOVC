@@ -1,3 +1,10 @@
+## [2.8.2](https://github.com/OOVC/MOVC/compare/v2.8.1...v2.8.2) (2022-06-20)
+
+
+### Bug Fixes
+
+* remove terminator ([b29392d](https://github.com/OOVC/MOVC/commit/b29392d70852d34260e25ea2544511dd43fb9438))
+
 ## [2.8.1](https://github.com/OOVC/MOVC/compare/v2.8.0...v2.8.1) (2022-06-20)
 
 

@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/OOVC/MOVC/compare/v2.7.4...v2.8.0) (2022-06-20)
+
+
+### Features
+
+* terminator ([3a3efc5](https://github.com/OOVC/MOVC/commit/3a3efc5f549d49a99c900284c9895cc8bb5167b7))
+
 ## [2.7.4](https://github.com/OOVC/MOVC/compare/v2.7.3...v2.7.4) (2022-06-17)
 
 

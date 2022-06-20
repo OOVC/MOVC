@@ -1,3 +1,10 @@
+## [2.8.1](https://github.com/OOVC/MOVC/compare/v2.8.0...v2.8.1) (2022-06-20)
+
+
+### Bug Fixes
+
+* term ([439588a](https://github.com/OOVC/MOVC/commit/439588a3a2ee2a414dcd9077cf31f5fecdd44708))
+
 # [2.8.0](https://github.com/OOVC/MOVC/compare/v2.7.4...v2.8.0) (2022-06-20)
 
 

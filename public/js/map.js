@@ -298,6 +298,16 @@ window.onload = async () => {
       }).addTo(movc);
     }
   }
+
+  let t = L.terminator();
+  t.addTo(movc);
+  setInterval(function () {
+    updateTerminator(t);
+  }, 500);
+  function updateTerminator(t) {
+    t.setTime();
+  }
+
   gsap.to("#map", { duration: 2, opacity: 1 });
   gsap.to("#preloader", { duration: 2, opacity: 0, scale: 0.2 });
 };

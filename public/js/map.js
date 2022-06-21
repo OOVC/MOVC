@@ -1,5 +1,5 @@
 function loginfo(...str) {
-  document.getElementById("preloader").innerHTML = str.join(" ");
+  document.getElementById("preloadermsg").innerHTML = str.join(" ");
   let info = str.shift();
   console.log(
     `%c ${info} `,
@@ -8,7 +8,7 @@ function loginfo(...str) {
   );
 }
 function logmarker(...str) {
-  document.getElementById("preloader").innerHTML = str.join(" ");
+  document.getElementById("preloadermsg").innerHTML = str.join(" ");
   let info = str.shift();
   console.log(
     `%c ${info} `,
@@ -17,7 +17,7 @@ function logmarker(...str) {
   );
 }
 function logland(...str) {
-  document.getElementById("preloader").innerHTML = str.join(" ");
+  document.getElementById("preloadermsg").innerHTML = str.join(" ");
   let info = str.shift();
   console.log(
     `%c ${info} `,
@@ -26,7 +26,7 @@ function logland(...str) {
   );
 }
 function logoccupation(...str) {
-  document.getElementById("preloader").innerHTML = str.join(" ");
+  document.getElementById("preloadermsg").innerHTML = str.join(" ");
   let info = str.shift();
   console.log(
     `%c ${info} `,
@@ -199,7 +199,7 @@ window.onload = async () => {
       }
       return L.marker(latlng);
     }
-    document.getElementById("preloader").innerHTML =
+    document.getElementById("preloadermsg").innerHTML =
       "Получаю: " + (geo[i].properties.name || geo[i].properties.Name);
     if (
       geo[i].properties.type === "city" ||

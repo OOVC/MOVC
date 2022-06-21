@@ -1,3 +1,10 @@
+## [2.9.4](https://github.com/OOVC/MOVC/compare/v2.9.3...v2.9.4) (2022-06-21)
+
+
+### Bug Fixes
+
+* final preloader message fix ([91cc8f1](https://github.com/OOVC/MOVC/commit/91cc8f10427b4fc8e180129a9b68d45a95f02f9c))
+
 ## [2.9.3](https://github.com/OOVC/MOVC/compare/v2.9.2...v2.9.3) (2022-06-21)
 
 

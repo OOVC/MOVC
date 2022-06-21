@@ -1,3 +1,10 @@
+# [2.9.0](https://github.com/OOVC/MOVC/compare/v2.8.2...v2.9.0) (2022-06-21)
+
+
+### Features
+
+* message ([79f3880](https://github.com/OOVC/MOVC/commit/79f3880c0a01504eba68eb420566e066c921927a))
+
 ## [2.8.2](https://github.com/OOVC/MOVC/compare/v2.8.1...v2.8.2) (2022-06-20)
 
 

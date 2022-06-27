@@ -286,13 +286,16 @@ module.exports = async (app, db, skl) => {
     });
   });
   app.get("/admin", (req, res) => {
-    res.render("pages/admin");
+    res.redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    // res.render("pages/admin");
   });
   app.get("/admin/currency-token", (req, res) => {
-    res.render("pages/valute-token");
+    res.redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    // res.render("pages/valute-token");
   });
   app.get("/admin/addcountry", (req, res) => {
-    res.render("pages/addcountry");
+    res.redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    // res.render("pages/addcountry");
   });
   app.get("/admin/approve-country", (req, res) => {
     res.render("pages/approve-country");
@@ -304,7 +307,8 @@ module.exports = async (app, db, skl) => {
     res.render("pages/delete-country");
   });
   app.get("/admin/edit-country-map", (req, res) => {
-    res.render("pages/edit-country-map");
+    res.redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    // res.render("pages/edit-country-map");
   });
   app.post("/delete-country", (req, res) => {
     let country = req.body || false;

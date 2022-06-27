@@ -1,3 +1,10 @@
+# [2.10.0](https://github.com/OOVC/MOVC/compare/v2.9.4...v2.10.0) (2022-06-27)
+
+
+### Features
+
+* add Cheijou lang ([a282c23](https://github.com/OOVC/MOVC/commit/a282c23f6f279612f99010c1eb6d132e4d114fa6))
+
 ## [2.9.4](https://github.com/OOVC/MOVC/compare/v2.9.3...v2.9.4) (2022-06-21)
 
 

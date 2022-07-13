@@ -1,3 +1,10 @@
+## [2.10.1](https://github.com/ERTH2/MOVC/compare/v2.10.0...v2.10.1) (2022-07-13)
+
+
+### Bug Fixes
+
+* map ([7ea4277](https://github.com/ERTH2/MOVC/commit/7ea4277fcb576d3fcf6487de59c238a66ec94975))
+
 # [2.10.0](https://github.com/OOVC/MOVC/compare/v2.9.4...v2.10.0) (2022-06-27)
 
 

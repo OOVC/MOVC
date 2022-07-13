@@ -278,7 +278,8 @@ module.exports = async (app, db, skl) => {
   });
 
   app.get("/map", (req, res) => {
-    res.render("pages/map");
+    res.redirect("https://client.movc.xyz/#/map");
+    // res.render("pages/map");
   });
   app.get("/erth2", (req, res) => {
     co.find({ verified: true }).count((_, v) => {

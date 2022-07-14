@@ -1,3 +1,10 @@
+## [2.10.2](https://github.com/ERTH2/MOVC/compare/v2.10.1...v2.10.2) (2022-07-14)
+
+
+### Bug Fixes
+
+* logo ([2413fa1](https://github.com/ERTH2/MOVC/commit/2413fa1f45bdf6121df21f86ab29945117fe4858))
+
 ## [2.10.1](https://github.com/ERTH2/MOVC/compare/v2.10.0...v2.10.1) (2022-07-13)
 
 

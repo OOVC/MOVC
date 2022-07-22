@@ -50,3 +50,11 @@ mongoClient.connect((err, client) => {
 server.listen(global.movc.PORT, () => {
   console.log(`Listening https on ${global.movc.PORT}`);
 });
+
+process.on("uncaughtException", (error) => {
+  console.log("error: ", error);
+});
+
+process.on("unhandledRejection", (error, promise) => {
+  console.log("error ", promise);
+});

@@ -1,3 +1,10 @@
+## [2.10.3](https://github.com/ERTH2/MOVC/compare/v2.10.2...v2.10.3) (2022-07-22)
+
+
+### Bug Fixes
+
+* errors :alien: ([a7cf374](https://github.com/ERTH2/MOVC/commit/a7cf374958af7dfd8da31417f7f6afd9f7ae2934))
+
 ## [2.10.2](https://github.com/ERTH2/MOVC/compare/v2.10.1...v2.10.2) (2022-07-14)
 
 

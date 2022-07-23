@@ -255,12 +255,9 @@ module.exports = async (app, db, skl) => {
     res.header("Access-Control-Allow-Origin", "https://geo.movc.xyz");
     let geo = await (
       await fetch(
-        "https://raw.githubusercontent.com/OOVC/MOVC-static/main/geo/geo.geojson"
+        `https://raw.githubusercontent.com/ERTH2/ERTH2-static/main/movc/geo/countries/countries/${req.params.country}.geojson`
       )
     ).json();
-    geo.features = geo.features.filter((val) => {
-      if (val.properties.name === req.params.country) return true;
-    });
     res.end(JSON.stringify(geo));
   });
   app.get("/pending-countries", (req, res) => {
